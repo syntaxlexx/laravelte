@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "resources/ts/*"
+            ]
+        },
+    },
+    "include": [
+        "resources/ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

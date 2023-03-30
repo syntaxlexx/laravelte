@@ -1,7 +1,7 @@
 <script lang="ts">
     import MainLayout from './MainLayout.svelte'
 	import { AppBar } from '@skeletonlabs/skeleton';
-    import { page } from "@inertiajs/svelte";
+    import { page, inertia } from "@inertiajs/svelte";
     import { LightSwitch } from '@skeletonlabs/skeleton';
 
     $: auth = $page.props.auth.user;
@@ -9,42 +9,37 @@
 
 <MainLayout>
     <svelte:fragment slot="header">
-        <!-- App Bar -->
-        <AppBar>
-            <svelte:fragment slot="lead">
-                <a href="/">
-                    <strong class="text-xl uppercase">{$page.props.appName}</strong>
-                </a>
-            </svelte:fragment>
+        <div class="container">
+            <AppBar>
+                <svelte:fragment slot="lead">
+                    <a href={route('dashboard')} use:inertia>
+                        <strong class="text-xl uppercase">{$page.props.siteName}</strong>
+                    </a>
+                </svelte:fragment>
 
-            <svelte:fragment slot="trail">
-                <LightSwitch/>
+                <svelte:fragment slot="trail">
+                    <LightSwitch/>
 
-                    <form action="/logout" method="POST">
-                        <button
-                            type="submit"
-                            class="btn btn-sm variant-ghost-surface"
-                        >
-                            Logout
-                        </button>
-                    </form>
+                        <form action="/logout" method="POST">
+                            <button
+                                type="submit"
+                                class="btn btn-sm variant-ghost-surface"
+                            >
+                                Logout
+                            </button>
+                        </form>
 
-                <a
-                    class="btn btn-sm variant-ghost-surface"
-                    href="/"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    Profile
-                </a>
-            </svelte:fragment>
-        </AppBar>
+                    <a
+                        class="btn btn-sm variant-ghost-surface"
+                        href={route('dashboard')}
+                        use:inertia
+                    >
+                        Profile
+                    </a>
+                </svelte:fragment>
+            </AppBar>
+        </div>
     </svelte:fragment>
-
-    <!-- Page Route Content -->
-    {#if $page.props.flash.message}
-        <div class="alert">{$page.props.flash.message}</div>
-    {/if}
 
     <!-- content -->
     <slot />

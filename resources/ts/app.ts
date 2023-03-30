@@ -1,5 +1,5 @@
 import './bootstrap';
-import '../css/app.postcss';
+import '../css/app.css';
 
 import { createInertiaApp } from '@inertiajs/svelte';
 
@@ -12,6 +12,7 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 createInertiaApp({
     title: (title: string | null) => `${title || ''} - ${appName}`,
     resolve: (name: string) => {
+        // set eager loading to true to get one js file. NB: Must be Enabled if Svelte
         const pages = import.meta.glob('./Pages/**/*.svelte', { eager: true })
         let page = pages[`./Pages/${name}.svelte`]
         return { default: page.default, layout: name.startsWith('Dashboard/') ? DashboardLayout : AppLayout }

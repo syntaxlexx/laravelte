@@ -2,8 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -36,14 +40,33 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return array_merge(parent::share($request), [
-            'appName' => config('app.name'),
+        $params = array_merge(parent::share($request), [
+            'flash' => function () use ($request) {
+                return [
+                    'success' => $request->session()->get('success'),
+                    'error' => $request->session()->get('error'),
+                ];
+            },
+            'logo' => '/img/laravelte-logo.png',
+            'siteName' => config('app.name'),
+            'locale' => Session::get('locale') ?? App::getLocale(),
+        ]);
 
-            'flash' => [],
+        $user = $request->user();
 
-            'auth.user' => fn () => $request->user()
-                ? $request->user()->only('id', 'name', 'email')
-                : null,
+        if (! $user) {
+            return array_merge($params, [
+                'auth.user' => null,
+            ]);
+        }
+
+        $newNotifications = Cache::remember('newNotifications', 600, function () use($user) {
+            return (int) $user->unreadNotifications()->count();
+        });
+
+        return array_merge($params, [
+            'new_notifications' => $newNotifications,
+            'auth.user' => json_decode((new UserResource($user))->toJson()),
         ]);
     }
 }

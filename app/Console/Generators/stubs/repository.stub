@@ -1,0 +1,133 @@
+<?php
+
+namespace DummyNamespace;
+
+use DB;
+
+class DummyClass
+{
+    protected $model;
+
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
+    /**
+     * fetch all records
+     *
+     * @param string $pagination
+     *
+     * @return ModelResourceCollection
+     */
+    public function get($pagination = 'm')
+    {
+        $data = $this->model->latest()
+            ->paginate(core_paginate($pagination));
+
+        return new ModelResourceCollection($data);
+    }
+
+    /**
+     * find model record
+     * @param $id
+     *
+     * @return ModelResource
+     */
+    public function find($id)
+    {
+        $item = $this->model->findOrFail($id);
+
+        return new ModelResource($item);
+    }
+
+    /**
+     * search records
+     *
+     * @param string $pagination
+     *
+     * @return ModelResourceCollection
+     */
+    public function search($pagination = 'm')
+    {
+        $term = request('search');
+
+        $data = $this->model
+            ->where('name', 'LIKE', '%' . $term . '%')
+            ->latest()
+            ->paginate(core_paginate($pagination));
+
+        return new ModelResourceCollection($data);
+    }
+
+    /**
+     * create a new record
+     *
+     * @return ModelResource
+     */
+    public function create()
+    {
+        try {
+            DB::beginTransaction();
+
+            $data = $this->model->create([
+                //
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            debugOn() ? dde($e->getMessage()) : false;
+
+            return false;
+        }
+
+        return new ModelResource($data);
+    }
+
+    /**
+     * update a record
+     *
+     * @return ModelResource
+     */
+    public function update($id)
+    {
+        try {
+            DB::beginTransaction();
+
+            $data = $this->model->findOrFail($id);
+
+            $data->update([
+                //
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            debugOn() ? dde($e->getMessage()) : false;
+
+            return false;
+        }
+
+        return new ModelResource($data);
+    }
+
+    /**
+     * delete a record
+      *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        return $this->model->findOrFail($id)->delete();
+    }
+}

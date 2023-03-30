@@ -1,0 +1,19 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Contracts\WidgetsInterface;
+use App\Widgets\WidgetsEvaluator;
+
+class DummyClass extends WidgetsEvaluator implements WidgetsInterface
+{
+    /**
+     * Method that returns a widget's data
+     *
+     * @return mixed
+     */
+    public function data()
+    {
+        return [];
+    }
+}

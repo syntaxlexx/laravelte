@@ -1,5 +1,10 @@
 <?php
 
+use App\Actions\Auth\Login;
+use App\Actions\Auth\Register;
+use App\Actions\Frontend\About;
+use App\Actions\Frontend\Contact;
+use App\Actions\Frontend\Home;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,28 +20,24 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'title' => 'Welcome to Laravel Inertia Svelte',
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
+Route::get('/', Home::class)->name('home');
+Route::get('/about', About::class)->name('about');
+Route::get('/contact', Contact::class)->name('contact');
 
-Route::get('/about', function () {
-    return Inertia::render('About', ['title' => 'About Us']);
-})->name('about');
+Route::get('/login', Login::class)->name('login');
+Route::get('/register', Register::class)->name('register');
 
-Route::get('/contact', function () {
-    return Inertia::render('Contact', ['title' => 'Contact Us']);
-})->name('contact');
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('change-language');
 
 Route::middleware([
-    // 'auth:sanctum',
-    // config('jetstream.auth_session'),
-    // 'verified',
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'active',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard/Index');

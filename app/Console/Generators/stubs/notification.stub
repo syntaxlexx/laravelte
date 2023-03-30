@@ -1,0 +1,90 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use App\Traits\QueueMailConstants;
+
+class DummyClass extends Notification implements ShouldQueue
+{
+    use Queueable;
+    use QueueMailConstants;
+
+    public $tries = 3;
+    public $timeout = 120;
+
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        // return $notifiable->prefers_sms ? ['nexmo'] : ['mail', 'database'];
+        return ['mail'];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        Log::channel('emails-sent')->info('New User Registration alert sent to ' . $notifiable->email);
+
+        $message = new MailMessage;
+        $config = $this->noReplyEmail();
+        $subject =  "My Subject";
+        $markdown = "view.name";
+
+
+        $message
+            ->from($config['email'], $config['name'])
+            ->subject($subject)
+            ->markdown($markdown, [
+                'support_name' => "Support",
+                'support_position' => 'Head Office',
+                'admin' => $notifiable,
+                'user' => $this->user,
+                'actionText' => 'View User',
+                'actionUrl' => route('dashboard.admin'),
+            ]);
+        
+        return $message;
+
+    }
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return [
+            'title' => $this->user->name . ' just performed an action!',
+            'message' => 'Email: ' . $this->user->email,
+            'link' => '#',
+            'icon' => 'mdi-account-circle-outline',
+            'alert' => config('acelords_system.notification_colors.new_admin_user'),
+            'ip_address' => request()->ip(),
+        ];
+    }
+}

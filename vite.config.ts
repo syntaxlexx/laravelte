@@ -8,8 +8,6 @@ export default defineConfig({
             input: 'resources/ts/app.ts',
             refresh: true,
         }),
-        svelte({
-
-        })
+        svelte()
     ],
 });

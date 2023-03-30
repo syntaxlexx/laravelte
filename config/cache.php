@@ -92,6 +92,11 @@ return [
             'driver' => 'octane',
         ],
 
+
+        'request' => [
+            'driver' => 'array'
+        ],
+
     ],
 
     /*

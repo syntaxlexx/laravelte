@@ -21,7 +21,7 @@ class RoleChecker
         $user = $request->user();
 
         if(! $user) {
-            return deny();
+            return deny(trans('auth.unauthenticated'));
         }
 
         $roles = str_replace(' ', '', $roles);

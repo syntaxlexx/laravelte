@@ -1,13 +1,13 @@
 <?php
 
 use App\Actions\Auth\Login;
+use App\Actions\Auth\Logout;
 use App\Actions\Auth\Register;
 use App\Actions\Frontend\About;
 use App\Actions\Frontend\Contact;
 use App\Actions\Frontend\Home;
-use Illuminate\Foundation\Application;
+use App\Actions\UserRedirector;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +24,9 @@ Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
 Route::get('/contact', Contact::class)->name('contact');
 
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
+Route::match(['GET', 'POST'], '/login', Login::class)->middleware(['guest', 'throttle:20,1'])->name('login');
+Route::match(['GET', 'POST'], '/register', Register::class)->middleware(['guest', 'throttle:20,1'])->name('register');
+Route::post('/logout', Logout::class)->middleware('auth:sanctum')->name('logout');
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
@@ -33,13 +34,24 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 })->name('change-language');
 
+Route::get('/demo', function() {
+    return redirect()->to(route('login', [
+        'username' => config('system.default.demo_username'),
+        'password' => config('system.default.demo_password'),
+    ]));
+})->name('demo');
+
 Route::middleware([
     'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
     'active',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard/Index');
-    })->name('dashboard');
+
+    // handle default dashboard route
+    Route::get('/dashboard', UserRedirector::class)->name('dashboard');
+
+    // user
+    include 'modules/user-web.php';
+
+    // admin
+    include 'modules/admin-web.php';
 });

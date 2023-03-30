@@ -10,7 +10,7 @@ class Contact
     use AsAction;
     use ThemesTrait;
 
-    public function handle()
+    public function asController()
     {
         return $this->generatePage('contact', 'Contact');
     }

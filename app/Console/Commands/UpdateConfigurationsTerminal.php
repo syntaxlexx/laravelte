@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Library\RedisConfigurations\Settings;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Redis;
 
 class UpdateConfigurationsTerminal extends Command
 {
@@ -48,7 +47,6 @@ class UpdateConfigurationsTerminal extends Command
         $settings->setDefaultConfigurations($data);
 
         $this->call('cache:clear');
-        Redis::flushDB();
 
         $this->info('Done updating system configuration...');
     }

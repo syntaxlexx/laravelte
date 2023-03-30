@@ -21,7 +21,7 @@
             <div class="container">
                 <AppBar background="bg-transparent">
                     <svelte:fragment slot="lead">
-                        <a href={route('user.dashboard')} use:inertia>
+                        <a href={route('admin.dashboard')} use:inertia>
                             <strong class="text-xl uppercase">{$page.props.siteName}</strong>
                         </a>
                     </svelte:fragment>

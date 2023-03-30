@@ -26,7 +26,7 @@ class CheckIfUserActive
             return $next($request);
         } else {
             // return redirect()->back()->with('message', 'Your user account is deactivated!');
-            abort(310, 'User account status is not active!');
+            abort(310, trans('auth.account_not_active'));
         }
 
         return $next($request);

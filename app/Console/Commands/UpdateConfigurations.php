@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Redis;
 use App\Library\RedisConfigurations\Settings;
 
 class UpdateConfigurations extends Command
@@ -63,13 +62,6 @@ class UpdateConfigurations extends Command
             Artisan::call('cache:clear');
 
             $this->info('cache:clear completed! ');
-        }
-
-        if ($this->confirm('Do you wish to clear all redis?', false))
-        {
-            Redis::flushDB();
-
-            $this->info('All redis DB cleared! ');
         }
 
         $this->line('Done Updating system configurations!');

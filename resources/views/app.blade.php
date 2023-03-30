@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
         @routes
 
         {{-- @vite(['resources/ts/app.ts', "resources/ts/Pages/{$page['component']}.svelte"]) --}}
-        @vite('resources/ts/app.ts')
+        @vite(['resources/ts/app.ts'])
 
         @inertiaHead
     </head>

@@ -21,8 +21,14 @@ It features:
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 Tooling:
-- Vite
+- Vite v4
+- Typescript
+- TailwindCSS
 - pnpm
+- Laravel 10
+- Laravel Sanctum
+- Svelte 3
+- Pest PHP Testing Library
 
 
 ## Contributing

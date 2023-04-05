@@ -2,6 +2,7 @@
 
 use App\Models\Configuration;
 use App\Repositories\RedisRepository;
+use App\Repositories\SystemInfoRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Artisan;
@@ -72,6 +73,22 @@ if (! function_exists('redis'))
     function redis()
     {
         return resolve(RedisRepository::class);
+    }
+}
+
+
+if (! function_exists('resetRedis'))
+{
+    /**
+     * reset redis after setting update
+     *
+     * @param string $target
+     */
+    function resetRedis($target = 'redis')
+    {
+        // refresh redis
+        $repo = resolve(SystemInfoRepository::class);
+        $repo->reset($target);
     }
 }
 

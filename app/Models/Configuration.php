@@ -26,4 +26,18 @@ class Configuration extends Model
         parent::__construct($attributes);
     }
 
+    public function getValueAttribute()
+    {
+        if ($this->type == self::TYPE_BOOL) {
+            return (bool) $this->attributes['value'];
+        }
+
+        if ($this->type == self::TYPE_NUMBER) {
+            return strpos($this->attributes['value'], '.') !== false
+                ? (int) $this->attributes['value']
+                : (float) $this->attributes['value'];
+        }
+
+        return $this->attributes['value'];
+    }
 }

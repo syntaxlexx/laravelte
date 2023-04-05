@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { AppShell, Toast, type ToastSettings, toastStore } from '@skeletonlabs/skeleton'
+    import { AppShell, Toast, type ToastSettings, toastStore, Modal } from '@skeletonlabs/skeleton'
     import { page } from '@inertiajs/svelte'
 
     $: title = `${$page.props.title ?? 'Welcome'} | ${$page.props.siteName}`
@@ -22,6 +22,8 @@
 </svelte:head>
 
 <div style="display: contents" class="min-h-screen overflow-hidden">
+    <Modal />
+
     {#if withShell}
         <AppShell>
             <Toast position="br" />

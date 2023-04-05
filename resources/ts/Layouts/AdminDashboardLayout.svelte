@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
     import MainLayout from './MainLayout.svelte'
-    import { AppBar } from '@skeletonlabs/skeleton'
+    import { AppBar, AppShell } from '@skeletonlabs/skeleton'
     import { page, inertia, useForm } from '@inertiajs/svelte'
-    import { LightSwitch } from '@skeletonlabs/skeleton'
+    import { LightSwitch, Drawer, drawerStore } from '@skeletonlabs/skeleton'
+    import AdminSidebar from '@/Components/AdminSidebar.svelte'
 
     $: auth = $page.props.auth.user
 
@@ -13,33 +14,61 @@
 
         $form.post(route('logout'))
     }
+
+    function drawerOpen(): void {
+        drawerStore.open({})
+    }
 </script>
 
-<MainLayout>
-    <svelte:fragment slot="header">
-        <div class="bg-surface-100-800-token">
-            <div class="container">
-                <AppBar background="bg-transparent">
-                    <svelte:fragment slot="lead">
-                        <a href={route('admin.dashboard')} use:inertia>
-                            <strong class="text-xl uppercase">{$page.props.siteName}</strong>
-                        </a>
-                    </svelte:fragment>
+<MainLayout withShell={true}>
+    <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64">
+        <svelte:fragment slot="header">
+            <div class="bg-surface-100-800-token">
+                <div class="container">
+                    <AppBar background="bg-transparent">
+                        <svelte:fragment slot="lead">
+                            <button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
+                                <span>
+                                    <svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
+                                        <rect width="100" height="20" />
+                                        <rect y="30" width="100" height="20" />
+                                        <rect y="60" width="100" height="20" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <a href={route('admin.dashboard')} use:inertia>
+                                <strong class="text-xl uppercase">{$page.props.siteName}</strong>
+                            </a>
+                        </svelte:fragment>
 
-                    <svelte:fragment slot="trail">
-                        <LightSwitch />
+                        <svelte:fragment slot="trail">
+                            <LightSwitch />
 
-                        <form on:submit|preventDefault={handleLogout}>
-                            <button type="submit" class="btn btn-sm variant-ghost-surface"> Logout </button>
-                        </form>
+                            <form on:submit|preventDefault={handleLogout}>
+                                <button type="submit" class="btn btn-sm variant-ghost-surface"> Logout </button>
+                            </form>
 
-                        <a class="btn btn-sm variant-ghost-surface" href="/dashboard" use:inertia> Profile </a>
-                    </svelte:fragment>
-                </AppBar>
+                            <span class="hidden lg:block">
+                                <a class="btn btn-sm variant-ghost-surface" href="/dashboard" use:inertia> Profile </a>
+                            </span>
+                        </svelte:fragment>
+                    </AppBar>
+                </div>
             </div>
-        </div>
-    </svelte:fragment>
+        </svelte:fragment>
 
-    <!-- content -->
-    <slot />
+        <!-- sidebar -->
+        <Drawer>
+            <AdminSidebar />
+        </Drawer>
+
+        <svelte:fragment slot="sidebarLeft">
+            <div id="sidebar-left" class="hidden lg:block">
+                <AdminSidebar />
+            </div>
+        </svelte:fragment>
+
+        <!-- content -->
+        <slot />
+    </AppShell>
 </MainLayout>

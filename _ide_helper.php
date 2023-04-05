@@ -18779,26 +18779,6 @@
                     /**
          * 
          *
-         * @param \Lorisleiva\Actions\class-string<JobDecorator> $jobDecoratorClass
-         * @static 
-         */ 
-        public static function useJobDecorator($jobDecoratorClass)
-        {
-                        return \Lorisleiva\Actions\ActionManager::useJobDecorator($jobDecoratorClass);
-        }
-                    /**
-         * 
-         *
-         * @param \Lorisleiva\Actions\class-string<JobDecorator&ShouldBeUnique> $uniqueJobDecoratorClass
-         * @static 
-         */ 
-        public static function useUniqueJobDecorator($uniqueJobDecoratorClass)
-        {
-                        return \Lorisleiva\Actions\ActionManager::useUniqueJobDecorator($uniqueJobDecoratorClass);
-        }
-                    /**
-         * 
-         *
          * @static 
          */ 
         public static function setDesignPatterns($designPatterns)

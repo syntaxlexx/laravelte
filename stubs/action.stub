@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ namespace }};
+
+use Lorisleiva\Actions\Concerns\AsAction;
+use Illuminate\Http\Request;
+use App\Traits\ThemesTrait;
+use App\Traits\CustomControllerResponsesTrait;
+
+class {{ class }}
+{
+    use AsAction;
+    use ThemesTrait;
+    use CustomControllerResponsesTrait;
+
+    public function asController(Request $request)
+    {
+        // ...
+    }
+}

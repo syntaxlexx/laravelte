@@ -12,7 +12,7 @@ class ListenerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'acelords:make-listener';
+    protected $name = 'system:make-listener';
 
     /**
      * The console command description.

@@ -15,7 +15,7 @@
     }
 </script>
 
-<MainLayout>
+<MainLayout withShell={true}>
     <svelte:fragment slot="header">
         <div class="bg-surface-100-800-token">
             <div class="container">

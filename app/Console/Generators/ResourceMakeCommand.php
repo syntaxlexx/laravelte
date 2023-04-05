@@ -12,7 +12,7 @@ class ResourceMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'acelords:make-resource';
+    protected $name = 'system:make-resource';
 
     /**
      * The console command description.

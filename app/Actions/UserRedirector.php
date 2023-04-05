@@ -10,7 +10,7 @@ class UserRedirector
 
     public function handle()
     {
-        if(doe()->isAdmin) {
+        if(doe()->isAdmin || doe()->isSudo) {
             return redirect()->route('admin.dashboard');
         }
 

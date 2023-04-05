@@ -23,7 +23,7 @@ return [
     'phone_starts_with' => 'The phone number must be in international phone number formatting standard (+)[country-code][number]',
     'phone_taken' => 'That phone has already been taken!',
     'phone_missing' => 'That phone number has not been registered!',
-    'email_name_phone_required' => "You must provide at least the email, phone, or the username",
+    'email_name_required' => "You must provide at least the email, or the username",
     'otp_sent' => "We have sent an OTP code. Use it to login.",
     'otp_expired' => 'The OTP code has expired!',
     'otp_failed' => 'OTP Verification NOT successful!',

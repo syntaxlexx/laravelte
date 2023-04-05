@@ -4,13 +4,23 @@
 <a href="https://github.com/lexxyungcarter/laravelte/actions"><img src="https://github.com/lexxyungcarter/laravelte/workflows/tests/badge.svg" alt="Build Status"></a>
 </p>
 
+![Screenshot 1](public/img/laravelte-screenshot-1.jpg)
+![Screenshot 1](public/img/laravelte-screenshot-2.jpg)
+
 
 ## About Laravelte
 
 Laravelte is an entire webapp based on the [Laravel](https://laravel.com) web application framework and [Svelte](https://svelte.com) frontend. The main goals of this project is to provide a quick way to get started with your projects.
 
+>NB: In this project, we shift our focus from "What controllers do I need?", "should I make a FormRequest for this?", "should this run asynchronously in a job instead?", etc. 
+
+to
+> "What does my application actually do?" Kinda like RPC
+
+
 It features:
 - [All Laravel Features](https://laravel.com).
+- Light & Dark Mode.
 - Quick Frontend Scaffolding via [Svelte](https://svelte.com) via [Inertiajs](https://inertiajs.com). Svelte is extremely fast, and provides less boilerplate as compared to [Vue](https://vuejs.org) and [React](https://react.com). 
 - Different **Admin** and **User** dashboard support.
 - CI/CD via [Github Actions](https://github.com/).

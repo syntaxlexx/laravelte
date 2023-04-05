@@ -11,7 +11,7 @@ class NotificationMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'acelords:make-notification';
+    protected $name = 'system:make-notification';
 
     /**
      * The console command description.

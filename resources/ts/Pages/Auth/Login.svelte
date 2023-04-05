@@ -77,6 +77,21 @@
                     {/if}
                 </button>
             </form>
+
+            {#if canResetPassword}
+                <br />
+                <p>
+                    <a href={route('forgot-password')}>Reset Password</a>
+                </p>
+            {/if}
+
+            {#if canRegister}
+                <br />
+                <p>
+                    Don't have an account yet?
+                    <a href={route('register')}>Register here</a>
+                </p>
+            {/if}
         </div>
     {/if}
 </div>

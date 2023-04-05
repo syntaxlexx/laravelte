@@ -1,14 +1,16 @@
 <script lang="ts">
-    import { AppShell, Toast, type ToastSettings, toastStore } from "@skeletonlabs/skeleton";
-    import { page } from "@inertiajs/svelte";
+    import { AppShell, Toast, type ToastSettings, toastStore } from '@skeletonlabs/skeleton'
+    import { page } from '@inertiajs/svelte'
 
-    $: title = `${$page.props.title ?? "Welcome"} | ${$page.props.siteName}`
-    $: flashMessage = $page.props.flash.message
+    $: title = `${$page.props.title ?? 'Welcome'} | ${$page.props.siteName}`
+    $: flashMessage = $page.props.flash
 
-    $: if(flashMessage) {
-        const t : ToastSettings = {
-            message: flashMessage,
-            background: $page.props.flash.type == 'error' ? 'variant-filled-error' : 'variant-filled-primary',
+    export let withShell = false
+
+    $: if (flashMessage && (flashMessage.success || flashMessage.error)) {
+        const t: ToastSettings = {
+            message: flashMessage.success || flashMessage.error,
+            background: $page.props.flash.success === null ? 'variant-filled-error' : 'variant-filled-primary',
         }
 
         toastStore.trigger(t)
@@ -19,15 +21,19 @@
     <title>{title}</title>
 </svelte:head>
 
-<div style="display: contents" class="h-full overflow-hidden">
-    <AppShell>
-        <Toast />
-        <svelte:fragment slot="header">
-            <slot name="header" />
-        </svelte:fragment>
+<div style="display: contents" class="min-h-screen overflow-hidden">
+    {#if withShell}
+        <AppShell>
+            <Toast position="br" />
+            <svelte:fragment slot="header">
+                <slot name="header" />
+            </svelte:fragment>
 
-        <!-- other layout data -->
+            <!-- other layout data -->
+            <slot />
+        </AppShell>
+    {:else}
+        <Toast position="br" />
         <slot />
-
-    </AppShell>
+    {/if}
 </div>

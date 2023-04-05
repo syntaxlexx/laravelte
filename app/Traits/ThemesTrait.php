@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Facades\SeoManager;
 use Illuminate\Support\Str;
 
 /**

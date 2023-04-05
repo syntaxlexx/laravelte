@@ -35,4 +35,16 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+    /**
+     * Get the events and handlers.
+     *
+     * @return array
+     */
+    public function listens()
+    {
+        include app_path('Library/events.php');
+
+        return array_merge($this->listen, $events);
+    }
 }

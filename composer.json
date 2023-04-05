@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
@@ -10,6 +13,7 @@
         "inertiajs/inertia-laravel": "^0.6.8",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
+        "laravel/slack-notification-channel": "^2.5",
         "laravel/tinker": "^2.8",
         "lorisleiva/laravel-actions": "^2.5",
         "predis/predis": "^2.1",

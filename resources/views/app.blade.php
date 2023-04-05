@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800;900&family=Roboto:ital,wght@0,300;0,500;0,900;1,300;1,500;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/fonts/boxicons/css/boxicons.min.css">
 
         <!--favicons-->
         <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">

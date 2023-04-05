@@ -18,9 +18,22 @@
 <div class="container mt-5 min-h-screen mx-auto flex justify-center items-center">
     <div class="space-y-10 text-center">
         {#if ready}
-            <h2 class="font-bold" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
-                Welcome to {$page.props.siteName}.
-            </h2>
+            <div class="flex gap-2 items-center justify-center" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
+                <h2>
+                    <span
+                        class="bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone"
+                        >Welcome</span
+                    >
+                </h2>
+                <h2>to</h2>
+                <h2>
+                    <span
+                        class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone"
+                    >
+                        {$page.props.siteName}.
+                    </span>
+                </h2>
+            </div>
         {/if}
 
         {#if ready}

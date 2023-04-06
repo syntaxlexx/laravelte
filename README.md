@@ -7,6 +7,7 @@
 ![Screenshot 1](public/img/laravelte-screenshot-1.jpg)
 ![Screenshot 2](public/img/laravelte-screenshot-2.jpg)
 ![Screenshot 3](public/img/laravelte-screenshot-3.jpg)
+![Screenshot 4](public/img/laravelte-screenshot-4.jpg)
 
 
 ## About Laravelte

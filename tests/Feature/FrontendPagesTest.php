@@ -16,3 +16,19 @@ test('home screen can be rendered', function () {
         ->component('Home')
     );
 })->group('browser');
+
+test('about screen can be rendered', function () {
+    $response = $this->get(route('about'));
+
+    $response->assertInertia(fn (Assert $page) => $page
+        ->component('About')
+    );
+})->group('browser');
+
+test('contact screen can be rendered', function () {
+    $response = $this->get(route('contact'));
+
+    $response->assertInertia(fn (Assert $page) => $page
+        ->component('Contact')
+    );
+})->group('browser');

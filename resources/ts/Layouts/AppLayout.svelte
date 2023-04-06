@@ -41,8 +41,11 @@
                             </a>
                         {/if}
 
+                        <a class="btn btn-sm variant-ghost-surface" href={route('about')} use:inertia> About </a>
+                        <a class="btn btn-sm variant-ghost-surface" href={route('contact')} use:inertia> Contact </a>
+
                         <a
-                            class="btn btn-sm variant-ghost-surface"
+                            class="btn btn-sm variant-ringed-surface"
                             href="https://twitter.com/acelords"
                             target="_blank"
                             rel="noreferrer"
@@ -50,7 +53,7 @@
                             Twitter
                         </a>
                         <a
-                            class="btn btn-sm variant-ghost-surface"
+                            class="btn btn-sm variant-ringed-surface"
                             href="https://github.com/lexxyungcarter/laravelte"
                             target="_blank"
                             rel="noreferrer"

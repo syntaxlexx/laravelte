@@ -2,6 +2,7 @@
 
 namespace App\Actions\Auth;
 
+use App\Events\UserLoggedIn;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\CustomControllerResponsesTrait;
@@ -36,6 +37,12 @@ class Login
             ]);
         }
 
+        if(! $request->wantsJson() && setting('restrict_non_admin_users_to_login_via_mobile_app') && !($user->isAdmin || $user->isSudo)) {
+            return $this->respValidationError([
+                'username' => [trans('auth.use_mobile_app')],
+            ]);
+        }
+
         // verify is user is active, + other checks
         if(! $user->canLogin()) {
             return $this->respValidationError([
@@ -49,8 +56,16 @@ class Login
             return $this->sendFailedLoginResponse($request);
         }
 
-        // TODO: event after login
-        // event(new UserLoggedIn($requestData, $user));
+        $deviceName = $request->device_name ?? $user->name . ' device';
+
+        event(new UserLoggedIn([
+            'ip' => $request->ip(),
+            'user_agent' => $request->header('User-Agent'),
+            'referer' => $request->header('Referer'),
+            'host' => $request->header('Host'),
+            'url' => $request->root(),
+            'device_name' => $deviceName,
+        ], $user));
 
         $deviceName = $request->device_name ?? $user->name . ' device';
 
@@ -70,7 +85,7 @@ class Login
                 'auth' => true,
                 'user' => new UserResource($user),
                 'access_token' => $user->createToken($deviceName)->plainTextToken,
-                // 'refresh_token' => $customs->refresh_token,
+                // 'refresh_token' => $token->refresh_token,
             ]);
         }
 

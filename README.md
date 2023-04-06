@@ -5,7 +5,8 @@
 </p>
 
 ![Screenshot 1](public/img/laravelte-screenshot-1.jpg)
-![Screenshot 1](public/img/laravelte-screenshot-2.jpg)
+![Screenshot 2](public/img/laravelte-screenshot-2.jpg)
+![Screenshot 3](public/img/laravelte-screenshot-3.jpg)
 
 
 ## About Laravelte
@@ -40,6 +41,23 @@ Tooling:
 - Svelte 3
 - Pest PHP Testing Library
 
+### Testing
+The project uses [Pest Testing Library](https://pestphp.com/) that is fantastic to use.
+
+Tests have been grouped to:
+```bash
+# All tests
+php artisan test
+
+# Browser tests
+php artisan test --group=browser
+
+# api tests
+php artisan test --group=api
+
+# Setup tests
+php artisan test --group=setup
+```
 
 ## Contributing
 

@@ -2,6 +2,9 @@
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Contracts\Auth\Authenticatable;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,9 @@ use Tests\TestCase;
 */
 
 uses(TestCase::class, RefreshDatabase::class)->in('Feature');
+
+uses()->group('admin')->in('Feature/Admin');
+uses()->group('user')->in('Feature/User');
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +48,92 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+
+/**
+ * Set the currently logged in user for the application.
+ *
+ * @return TestCase
+ */
+function actingAs(Authenticatable $user, string $driver = null)
 {
-    // ..
+    return test()->actingAs($user, $driver);
+}
+
+/**
+ * Sign in the given user or create new one if not provided.
+ *
+ * @param $user \App\User
+ *
+ * @return \App\User
+ */
+function actingAsSanctum($user = null) : User
+{
+    $user = $user ?: User::factory()->create();
+    Sanctum::actingAs($user, ['*']);
+    return $user;
+}
+
+
+function seedConfigurations() : void
+{
+    $configs = collect(config('system_configurations'))->map(function($item, $key) {
+        return [
+            'name' => $key,
+            'type' => $item['type'],
+            'value' => $item['default'] ?? null
+        ];
+    })->values();
+
+    redis()->set('configurations', $configs);
+}
+
+function updateConfigurationValue(string $name, $value) : void
+{
+    $configs = redis()->get('configurations');
+    $updated = $configs->map(function($item) use ($name, $value) {
+        $item = (array) $item;
+
+        if($item['name'] == $name) {
+            $item['value'] = $value;
+        }
+        return $item;
+    });
+
+    redis()->set('configurations', $updated);
+}
+
+/**
+ * provide the inertia headers to pass in requests
+ */
+function inertiaHeaders() : array
+{
+    return [
+        'X-Inertia' => true
+    ];
+}
+
+/**
+ * create and return a user by a certain role
+ * @param string $role
+ * @return User
+ */
+function getUserByRole($role = User::ROLE_USER, $attributes = []) : User
+{
+    $user = User::factory()->create(array_merge([
+        'role' => $role
+    ], $attributes));
+
+    return $user;
+}
+
+/**
+ * assert sucess in browser post/put response
+ */
+function assertBrowserSuccess($response) : void
+{
+    $response->assertRedirect()
+        ->assertSessionHasNoErrors()
+        ->assertValid()
+        ->assertSessionHas('success')
+        ->assertSessionMissing('error');
 }

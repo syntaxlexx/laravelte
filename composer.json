@@ -1,10 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "lexxyungcarter/laravelte",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Laravel 10 Ft. Inertiajs, Svelte, Typescript, TailwindCSS Skeleton UI and Pest Tests",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "laravelte",
+        "svelte",
+        "pest",
+        "TailwindCSS"
     ],
     "license": "MIT",
     "require": {

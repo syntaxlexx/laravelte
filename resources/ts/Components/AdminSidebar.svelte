@@ -2,6 +2,26 @@
     import { drawerStore } from '@skeletonlabs/skeleton'
     import { inertia } from '@inertiajs/svelte'
 
+    type NavItem = {
+        title: string
+        route: string
+    }
+
+    const navItems: NavItem[] = [
+        {
+            title: 'Dashboard',
+            route: route('admin.dashboard'),
+        },
+        {
+            title: 'Configurations',
+            route: route('admin.settings.configurations'),
+        },
+        {
+            title: 'Reset System',
+            route: route('admin.settings.reset-system'),
+        },
+    ]
+
     function drawerClose(): void {
         drawerStore.close()
     }
@@ -9,8 +29,8 @@
 
 <nav class="list-nav">
     <ul>
-        <li><a href={route('admin.dashboard')} use:inertia on:click={drawerClose}>Dashboard</a></li>
-        <li><a href={route('admin.settings.configurations')} use:inertia on:click={drawerClose}>Configurations</a></li>
-        <li><a href={route('admin.settings.reset-system')} use:inertia on:click={drawerClose}>Reset System</a></li>
+        {#each navItems as item}
+            <li><a href={item.route} use:inertia on:click={drawerClose}>{item.title}</a></li>
+        {/each}
     </ul>
 </nav>

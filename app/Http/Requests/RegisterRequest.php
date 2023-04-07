@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string|max:255|unique:users,name',
-            'email' => 'nullable|email|string|min:1|max:255|unique:users,email',
+            'email' => 'required|email|string|min:1|max:255|unique:users,email',
             'phone' => 'nullable|string|max:255|min:10|unique:users,phone|starts_with:+',
             'password' => 'required|string|confirmed|max:255',
             'first_name' => 'required|string|max:255',
@@ -35,25 +35,4 @@ class RegisterRequest extends FormRequest
         ];
     }
 
-    /**
-     * extra validation
-     *
-     * @param $validator
-     */
-    public function withValidator($validator)
-    {
-        // validate at least user has provided email, or username
-        $validator->after(function ($validator)
-        {
-            $email = $validator->attributes()['email'] ?? null;
-            $username = $validator->attributes()['name'] ?? null;
-
-            if(! $email && ! $username)
-            {
-                $message = trans('auth.email_name_required');
-                $validator->errors()->add('email', $message);
-                $validator->errors()->add('name', $message);
-            }
-        });
-    }
 }

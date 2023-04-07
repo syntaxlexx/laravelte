@@ -5,6 +5,7 @@ use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Contracts\Auth\Authenticatable;
 use App\Models\User;
+use Illuminate\Support\Facades\Config;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,4 +137,12 @@ function assertBrowserSuccess($response) : void
         ->assertValid()
         ->assertSessionHas('success')
         ->assertSessionMissing('error');
+}
+
+/**
+ * increase throttle for testing purposes
+ */
+function increaseThrottles() : void {
+    Config::set('auth.limiters.registration', '50,1');
+    Config::set('auth.limiters.login', '50,1');
 }

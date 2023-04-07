@@ -31,10 +31,10 @@ Route::get('/contact', Contact::class)->name('contact');
 
 // Auth routes - only for the web
 // ----------------------------------
-Route::get('/login', LoginPage::class)->middleware(['guest', 'throttle:20,1'])->name('login');
-Route::post('/login', Login::class)->middleware(['guest', 'throttle:20,1'])->name('login');
-Route::get('/register', RegisterPage::class)->middleware(['guest', 'throttle:20,1'])->name('register');
-Route::post('/register', Register::class)->middleware(['guest', 'throttle:20,1'])->name('register');
+Route::get('/login', LoginPage::class)->middleware(['guest'])->name('login');
+Route::post('/login', Login::class)->middleware(['guest', 'throttle:' . config('auth.limiters.login')])->name('login');
+Route::get('/register', RegisterPage::class)->middleware(['guest'])->name('register');
+Route::post('/register', Register::class)->middleware(['guest', 'throttle:' . config('auth.limiters.registration')])->name('register');
 Route::post('/logout', Logout::class)->middleware('auth:sanctum')->name('logout');
 Route::get('/forgot-password', ForgotPassword::class)->middleware('guest')->name('forgot-password');
 Route::get('/reset-password/{token}', ResetPassword::class)->middleware('guest')->name('password.reset');

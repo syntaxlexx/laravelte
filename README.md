@@ -29,6 +29,7 @@ It features:
 - [Laravel Actions](https://laravelactions.com/): Instead of creating controllers, jobs, listeners and so on, it allows you to create a PHP class that handles a specific task and run that class as anything you want.
 - [Redis support](https://laravel.com/docs/queues) and Laravel Queues.
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [i18N (Localization) - Multiple languages support](https://laravel.com/docs/10.x/localization#main-content).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -58,6 +59,13 @@ php artisan test --group=api
 
 # Setup tests
 php artisan test --group=setup
+
+# test in parallel
+php artisan test --parallel
+php artisan test --parallel --processes=4
+
+# list of your ten slowest tests
+php artisan test --profile
 ```
 
 ## Contributing

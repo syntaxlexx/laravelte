@@ -13,7 +13,7 @@
 
     $: filteredList = configurations.filter(it => {
         if (search) {
-            return it.name.toLowerCase().includes(search)
+            return it.name.toLowerCase().includes(search.toLowerCase())
         }
         return it
     })

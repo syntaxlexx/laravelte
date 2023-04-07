@@ -21,7 +21,7 @@
     <title>{title}</title>
 </svelte:head>
 
-<div style="display: contents" class="min-h-screen overflow-hidden">
+<div class="h-full overflow-hidden contents">
     <Modal />
 
     {#if withShell}
@@ -31,7 +31,6 @@
                 <slot name="header" />
             </svelte:fragment>
 
-            <!-- other layout data -->
             <slot />
         </AppShell>
     {:else}

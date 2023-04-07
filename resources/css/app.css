@@ -6,35 +6,43 @@
     /* --on-primary: 0 0 0; */
     /* primary | #ef3b2d */
     /* ⬅ #fde2e0 */
-	/* --color-primary-50: 253 226 224;  */
+    /* --color-primary-50: 253 226 224;  */
     /* ⬅ #fcd8d5 */
-	/* --color-primary-100: 252 216 213;  */
+    /* --color-primary-100: 252 216 213;  */
     /* ⬅ #fbcecb */
-	/* --colo/r-primary-200: 251 206 203;  */
+    /* --colo/r-primary-200: 251 206 203;  */
     /* ⬅ #f9b1ab */
-	/* --color-primary-300: 249 177 171;  */
+    /* --color-primary-300: 249 177 171;  */
     /* ⬅ #f4766c */
-	/* --color-primary-400: 244 118 108;  */
+    /* --color-primary-400: 244 118 108;  */
     /* ⬅ #ef3b2d */
-	/* --color-primary-500: 239 59 45;  */
+    /* --color-primary-500: 239 59 45;  */
     /* ⬅ #d73529 */
-	/* --color-primary-600: 215 53 41;  */
+    /* --color-primary-600: 215 53 41;  */
     /* ⬅ #b32c22 */
-	/* --color-primary-700: 179 44 34;  */
+    /* --color-primary-700: 179 44 34;  */
     /* ⬅ #8f231b */
-	/* --color-primary-800: 143 35 27;  */
+    /* --color-primary-800: 143 35 27;  */
     /* ⬅ #751d16 */
-	/* --color-primary-900: 117 29 22;  */
+    /* --color-primary-900: 117 29 22;  */
 }
 
-html, body { @apply h-full overflow-hidden }
+html,
+body {
+    @apply h-full overflow-hidden;
+}
 
 .inter {
-font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 .roboto {
-font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .modal-footer {
     @apply mt-5;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
 }

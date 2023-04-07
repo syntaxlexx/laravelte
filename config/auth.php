@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -111,5 +117,19 @@ return [
     */
 
     'password_timeout' => 10800,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Route Limiters
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the default limiters to apply on auth routes.
+    |
+    */
+    'limiters' => [
+        'login' => '6,1',
+        'registration' => '6,1',
+        'verification' => '6,1',
+    ]
 
 ];

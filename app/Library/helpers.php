@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Configuration;
+use App\Models\User;
 use App\Repositories\RedisRepository;
 use App\Repositories\SystemInfoRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -32,6 +33,18 @@ if (! function_exists('debugOn'))
     function debugOn() : bool
     {
         return env('APP_DEBUG');
+    }
+}
+
+if (! function_exists('ddOnError'))
+{
+    /**
+     * dd on error
+     */
+    function ddOnError(Exception $e) : void
+    {
+        if(debugOn() && env('DD_ON_ERROR', true))
+            dde($e->getMessage());
     }
 }
 
@@ -317,3 +330,14 @@ if(! function_exists('is_serialized'))
     }
 }
 
+if (! function_exists('adminUsers'))
+{
+    /**
+     * Get the admin users in the system
+     * Userfule when one requires to alert admins of an activity
+     */
+    function adminUsers()
+    {
+        return User::admins()->get();
+    }
+}

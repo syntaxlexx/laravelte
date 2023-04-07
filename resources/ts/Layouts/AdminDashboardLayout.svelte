@@ -20,8 +20,8 @@
     }
 </script>
 
-<MainLayout withShell={true}>
-    <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64">
+<MainLayout>
+    <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64" regionPage="overflow-y-auto relative h-screen">
         <svelte:fragment slot="header">
             <div class="bg-surface-100-800-token">
                 <div class="container">
@@ -64,11 +64,14 @@
 
         <svelte:fragment slot="sidebarLeft">
             <div id="sidebar-left" class="hidden lg:block">
-                <AdminSidebar />
+                <div class="overflow-y-auto h-screen">
+                    <AdminSidebar />
+                </div>
             </div>
         </svelte:fragment>
 
         <!-- content -->
         <slot />
+        <div class="my-4" />
     </AppShell>
 </MainLayout>

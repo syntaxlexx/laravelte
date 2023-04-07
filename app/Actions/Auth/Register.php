@@ -3,9 +3,11 @@
 namespace App\Actions\Auth;
 
 use App\Events\CRUDErrorOccurred;
+use App\Events\UserWasRegistered;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Repositories\UserRepository;
 use App\Traits\CustomControllerResponsesTrait;
 use App\Traits\ThemesTrait;
 use Exception;
@@ -21,7 +23,14 @@ class Register
     use ThemesTrait;
     use CustomControllerResponsesTrait;
 
-    public function asController(RegisterRequest $request)
+    /**
+     * Provide functions for formatting & detecting phone numbers
+     *
+     * @var UsersRepository
+     */
+    protected $usersRepo;
+
+    public function asController(RegisterRequest $request, UserRepository $usersRepo)
     {
         if (!setting('allow_user_registrations')) {
             return $this->respError(trans('auth.registration_closed'));
@@ -40,44 +49,7 @@ class Register
             'last_name',
         ]);
 
-        $data = collect($data)->filter(function ($value) {
-            return !empty($value);
-        })->toArray();
-
-        try {
-            DB::beginTransaction();
-
-            $role = User::ROLE_DEFAULT;
-            $theRole = 'ROLE_' . strtoupper($role);
-            $data['role'] = constant("App\Models\User::$theRole");
-
-            isset($data['date_of_birth']) ? $data['date_of_birth'] = Carbon::parse(request('date_of_birth')) : '';
-            $data['password'] = bcrypt($data['password']);
-
-            // set an appropriate (user)name if not provided
-            if (!isset($data['name']) || empty($data['name'])) {
-                if (isset($data['first_name'])) {
-                    $data['name'] = Str::slug($data['first_name'] . '-' . Str::random(5));
-                } else if (isset($data['email'])) {
-                    $data['name'] = Str::slug(explode('@', $data['email'])[0] . '-' . Str::random(5));
-                } else {
-                    $data['name'] = Str::slug(Str::random(10));
-                }
-            }
-
-            $user = User::create($data);
-        } catch (Exception $e) {
-            DB::rollBack();
-
-            debugOn() ? dde($e->getMessage()) : '';
-
-            event(new CRUDErrorOccurred($e->getMessage()));
-
-            return false;
-        }
-
-        // TODO: event
-        // event(new UserWasCreated($user->fresh(), doe()));
+        $user = $usersRepo->create($data, User::ROLE_DEFAULT);
 
         if ($user) {
             if ($request->wantsJson())

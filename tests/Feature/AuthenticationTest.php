@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\UserLoggedIn;
+use App\Listeners\UserHasLoggedIn;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia as Assert;
@@ -10,6 +11,7 @@ uses(RefreshDatabase::class);
 
 beforeEach(function () {
     seedConfigurations();
+    increaseThrottles();
 });
 
 test('login screen can be rendered', function () {
@@ -17,14 +19,6 @@ test('login screen can be rendered', function () {
 
     $response->assertInertia(fn (Assert $page) => $page
         ->component('Auth/Login')
-    );
-})->group('browser');
-
-test('register screen can be rendered', function () {
-    $response = $this->get(route('register'));
-
-    $response->assertInertia(fn (Assert $page) => $page
-        ->component('Auth/Register')
     );
 })->group('browser');
 
@@ -45,6 +39,11 @@ test('users can authenticate with username via the login screen', function () {
     $response->assertRedirect(route('user.dashboard'));
 
     Event::assertDispatched(UserLoggedIn::class);
+
+    Event::assertListening(
+        UserLoggedIn::class,
+        UserHasLoggedIn::class
+    );
 
 })->group('browser');
 

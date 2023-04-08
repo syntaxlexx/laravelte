@@ -26,7 +26,7 @@
     }
 </script>
 
-<div class="container mt-5">
+<div class="container page-padding">
     {#if ready}
         <div class="mx-auto max-w-lg" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
             <h2 class="text-center">Login</h2>

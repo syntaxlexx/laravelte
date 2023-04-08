@@ -9,7 +9,7 @@
     onMount(() => (ready = true))
 </script>
 
-<div class="container mt-5" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
+<div class="container page-padding" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
     <Title>About Us</Title>
     <br />
 
@@ -45,8 +45,8 @@
             </ul>
         </div>
         <div class="w-full lg:w-1/2">
-            <div class="px-4">
-                <figure>
+            <div class="px-4 mt-12 lg:mt-0">
+                <figure class="mx-auto">
                     <img src="/img/laravelte-screenshot-5.png" alt="screenshot" />
                     <figcaption>A screenshot showing some successful tests earier on in project development</figcaption>
                 </figure>
@@ -55,10 +55,10 @@
     </div>
     <div class="flex flex-wrap mt-12">
         <div class="w-full lg:w-1/2">
-            <img src="/img/laravelte-screenshot-6.png" alt="laravelte" />
+            <img src="/img/laravelte-screenshot-6.png" alt="laravelte" class="mx-auto pr-5" />
         </div>
-        <div class="w-full lg:w-1/2">
-            <h3>What -and Why - is Laravel Actions?</h3>
+        <div class="w-full lg:w-1/2 mt-12 lg:mt-0">
+            <h3 class="mb-4 underline underline-offset-8">What - and why - is Laravel Actions?</h3>
             <p>Laravel Actions is one of those things you didn't know you needed till you used it.</p>
             <p>
                 The mindset shits focus from thinking about controllers, and instead become more <strong
@@ -79,14 +79,21 @@
                 >
             </p>
             <br />
-            <p>
-                Instead, <strong>Complex FormRequests, Jobs, Events, Listeners, Commands, Middlewares, e.t.c</strong> are
-                left as per their defaults.
-            </p>
+            <p>Instead,</p>
+            <ul class="list-disc pl-8">
+                <li>Complex FormRequests</li>
+                <li>Jobs</li>
+                <li>Events</li>
+                <li>Listeners</li>
+                <li>Commands</li>
+                <li>Middlewares</li>
+                <li>e.t.c</li>
+            </ul>
+            <p>are left as per their defaults.</p>
             <p>
                 Actions are - technically, <strong>Controllers!</strong>. They handle most of the logic (view them as
                 kind of like-components), dispatch jobs, fire events, validate requests, e.t.c. This approach ensures
-                <strong>easier Maintainability</strong> and no mental fatigue in the long run.
+                <strong>easier Maintainability</strong> and no <strong>mental fatigue</strong> in the long run.
             </p>
         </div>
     </div>

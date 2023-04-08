@@ -13,7 +13,7 @@
     export let updated_at: Date
 </script>
 
-<div class="container mt-5" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
+<div class="container page-padding" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
     <Title>{title}</Title>
     <br />
     <p>Last Updated {formatDate(updated_at)}.</p>

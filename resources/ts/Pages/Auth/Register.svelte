@@ -29,7 +29,7 @@
     }
 </script>
 
-<div class="container mt-5">
+<div class="container page-padding">
     {#if ready}
         {#if canRegister}
             <div class="mx-auto max-w-lg" in:fly={{ y: -70, duration: 300, easing: quintOut }}>

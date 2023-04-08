@@ -9,7 +9,7 @@
     onMount(() => (ready = true))
 </script>
 
-<div class="container mt-5" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
+<div class="container page-padding" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
     <Title>Contact Us Page</Title>
     <a href="/" use:inertia>Go Home</a>
     <br />

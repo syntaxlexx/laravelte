@@ -21,7 +21,7 @@
     <title>{title}</title>
 </svelte:head>
 
-<div class="h-full overflow-hidden contents">
+<div class="">
     <Modal />
 
     {#if withShell}

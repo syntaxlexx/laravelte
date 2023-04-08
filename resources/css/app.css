@@ -27,11 +27,6 @@
     /* --color-primary-900: 117 29 22;  */
 }
 
-html,
-body {
-    @apply h-full overflow-hidden;
-}
-
 .inter {
     font-family: 'Inter', sans-serif;
 }
@@ -53,4 +48,13 @@ body {
 
 figcaption {
     @apply text-sm italic mt-1;
+}
+a.no-underline {
+    @apply !no-underline;
+}
+.page-padding {
+    @apply mt-28 mb-12;
+}
+.page-top-padding {
+    @apply mt-28;
 }

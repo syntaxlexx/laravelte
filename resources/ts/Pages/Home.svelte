@@ -15,7 +15,7 @@
     <title>Welcome</title>
 </svelte:head>
 
-<div class="container mt-5 min-h-screen mx-auto flex justify-center items-center">
+<div class="container page-padding mx-auto flex justify-center items-center">
     <div class="space-y-10 text-center">
         {#if ready}
             <div class="flex gap-2 items-center justify-center" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
@@ -37,16 +37,20 @@
         {/if}
 
         {#if ready}
-            <figure in:fly={{ y: 70, duration: 300, delay: 300, easing: quintOut }}>
+            <figure class="max-w-[80%]" in:fly={{ y: 70, duration: 300, delay: 300, easing: quintOut }}>
                 <section class="img-bg" />
                 <img src="/img/laravelte-logo.png" alt="logo" class="h-12 md:h-16 lg:h-24 w-auto" />
             </figure>
         {/if}
 
         {#if ready}
-            <div class="flex justify-center space-x-2" in:fade={{ delay: 700, duration: 700, easing: quintOut }}>
+            <div class="text-center" in:fade={{ delay: 700, duration: 700, easing: quintOut }}>
                 <a class="btn btn-filled" href="https://skeleton.dev/" target="_blank" rel="noreferrer">
                     Powered by<strong class="ml-1 underline">Skeleton UI (TailwindCSS)</strong>
+                </a>
+                <br />
+                <a class="btn btn-filled" href="https://flowbite.com/docs/" target="_blank" rel="noreferrer">
+                    ... and some bit of<strong class="ml-1 underline">Flowbite (TailwindCSS)</strong>
                 </a>
             </div>
         {/if}

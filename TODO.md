@@ -1,8 +1,8 @@
 # Todo List
-
 - [x] Homepage
-- [ ] About us
-- [ ] Contact us
+- [x] Footer
+- [x] About us page
+- [ ] Contact us page
 - [x] Login
 - [x] Register
 - [ ] Forgot Password
@@ -11,6 +11,7 @@
 - [x] Admin - dashboard
 - [x] Admin - configurations
 - [x] Admin - reset system
+- [ ] Admin Contact us messages 
 - [ ] Admin - profile
 - [x] User - dashboard
 - [ ] User - profile

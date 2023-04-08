@@ -14,6 +14,9 @@
 
 Laravelte is an entire webapp based on the [Laravel](https://laravel.com) web application framework and [Svelte](https://svelte.com) frontend. The main goals of this project is to provide a quick way to get started with your projects.
 
+[TODO List Found Here](TODO.md)
+
+
 >NB: In this project, we shift our focus from "What controllers do I need?", "should I make a FormRequest for this?", "should this run asynchronously in a job instead?", etc. 
 
 to
@@ -42,6 +45,7 @@ Tooling:
 - Laravel Sanctum
 - Svelte 3
 - Pest PHP Testing Library
+
 
 ### Testing
 The project uses [Pest Testing Library](https://pestphp.com/) that is fantastic to use.

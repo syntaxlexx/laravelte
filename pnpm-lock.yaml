@@ -4,6 +4,9 @@ dependencies:
   '@inertiajs/svelte':
     specifier: ^1.0.2
     version: 1.0.2(svelte@3.57.0)
+  dayjs:
+    specifier: ^1.11.7
+    version: 1.11.7
 
 devDependencies:
   '@skeletonlabs/skeleton':
@@ -787,6 +790,10 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
     dev: true
+
+  /dayjs@1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+    dev: false
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

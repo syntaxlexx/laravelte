@@ -25,13 +25,17 @@
     <Modal />
 
     {#if withShell}
-        <AppShell>
+        <AppShell regionPage="overflow-y-auto relative h-screen scrollbar-hidden">
             <Toast position="br" />
             <svelte:fragment slot="header">
                 <slot name="header" />
             </svelte:fragment>
 
             <slot />
+
+            <svelte:fragment slot="pageFooter">
+                <slot name="footer" />
+            </svelte:fragment>
         </AppShell>
     {:else}
         <Toast position="br" />

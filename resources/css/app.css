@@ -46,3 +46,11 @@ body {
     width: 100%;
     overflow-x: auto;
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+figcaption {
+    @apply text-sm italic mt-1;
+}

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { drawerStore } from '@skeletonlabs/skeleton'
-    import { inertia } from '@inertiajs/svelte'
+    import { inertia, page } from '@inertiajs/svelte'
 
     type NavItem = {
         title: string
@@ -30,7 +30,16 @@
 <nav class="list-nav">
     <ul>
         {#each navItems as item}
-            <li><a href={item.route} use:inertia on:click={drawerClose}>{item.title}</a></li>
+            <li>
+                <a
+                    class="!rounded hover:rounded focus:rounded"
+                    class:bg-primary-active-token={item.route.endsWith($page.url)}
+                    href={item.route}
+                    use:inertia
+                    on:click={drawerClose}
+                    >{item.title}
+                </a>
+            </li>
         {/each}
     </ul>
 </nav>

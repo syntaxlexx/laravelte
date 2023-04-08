@@ -10,6 +10,7 @@ use App\Actions\Auth\Register;
 use App\Actions\Frontend\About;
 use App\Actions\Frontend\Contact;
 use App\Actions\Frontend\Home;
+use App\Actions\Frontend\PolicyPages;
 use App\Actions\UserRedirector;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
 Route::get('/contact', Contact::class)->name('contact');
+Route::get('/policy-pages/{slug?}', PolicyPages::class)->name('policy-pages');
 
 
 // Auth routes - only for the web

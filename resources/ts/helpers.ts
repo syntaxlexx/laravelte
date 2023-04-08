@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 
 /**
  * convert snake case to sentence case, capitalizing all words
@@ -10,3 +11,15 @@ export const snakeCaseToSentenceCaseCapitalizeWords = (value: string | null) => 
         return l.toUpperCase();
     });
 };
+
+
+/**
+ * format a post date
+ * @param dt Date
+ * @param format string
+ * @returns string
+ */
+export const formatDate = (dt: Date | null | undefined, format = 'DD MMMM, YYYY') => {
+    if (!dt) return null;
+    return dayjs(dt).format(format);
+}

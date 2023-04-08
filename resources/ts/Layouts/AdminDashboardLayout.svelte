@@ -21,7 +21,10 @@
 </script>
 
 <MainLayout>
-    <AppShell slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64" regionPage="overflow-y-auto relative h-screen">
+    <AppShell
+        slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64"
+        regionPage="overflow-y-auto relative h-screen scrollbar-hidden"
+    >
         <svelte:fragment slot="header">
             <div class="bg-surface-100-800-token">
                 <div class="container">
@@ -58,7 +61,7 @@
         </svelte:fragment>
 
         <!-- sidebar -->
-        <Drawer>
+        <Drawer regionDrawer="mt-16 w-56 pb-16">
             <AdminSidebar />
         </Drawer>
 

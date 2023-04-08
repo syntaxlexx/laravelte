@@ -28,6 +28,7 @@
 - [ ] Social logins (Socialite)
 - [ ] Admin - dashboard
 - [ ] Admin - configurations
+- [ ] Admin - manage contact form messages
 - [ ] Admin - reset system
 - [ ] Admin - profile
 - [ ] User - dashboard

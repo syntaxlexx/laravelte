@@ -28,3 +28,9 @@ Route::post('/register', Register::class)->middleware(['guest', 'throttle:' . co
 Route::post('/logout', Logout::class)->middleware('auth:sanctum')->name('logout');
 
 Route::post('/contact', Contact::class)->middleware('throttle:' . config('auth.limiters.contact'))->name('contact.store');
+
+// user
+include 'modules/user.php';
+
+// admin
+include 'modules/admin.php';

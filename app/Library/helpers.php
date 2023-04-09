@@ -373,3 +373,30 @@ if(! function_exists('sanitizeDomainUrl'))
         return $domain;
     }
 }
+
+
+if (! function_exists('pagination'))
+{
+    /**
+     * Get paginations for different parts of the System.
+     * Opted for function in case the paginations require to be
+     * retrieved via a setting instead of config option.
+     * 'xs' => 5,
+     * 's' => 10,
+     * 'm' => 25,
+     * 'l' => 50,
+     * 'xl' => 100,
+     * 'p' => 7
+     *
+     * @param string $entity
+     * @return int $pagination
+     */
+    function pagination($entity = "p") {
+        $paginations = config('system.pagination');
+        foreach($paginations as $key => $value) {
+            if ($key == strtolower($entity))
+                return (int)$value;
+        }
+        return is_numeric($entity) ? $entity : (int)$paginations['p'];
+    }
+}

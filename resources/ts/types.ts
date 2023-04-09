@@ -15,11 +15,23 @@ export type SystemConfiguration = {
     hint?: string,
 }
 
+export type PaginationMeta = {
+    current_page: number,
+    from: 1,
+    to: number,
+    total: number,
+    path: string,
+    last_page: number,
+    per_page: number,
+}
+
 export type ContactMessage = {
     id?: number,
+    name: string,
     subject: string,
-    message: string,
+    body: string,
     phone?: string,
     email?: string,
     last_read_at?: Date,
+    last_read_at_w3c?: Date,
 }

@@ -20,6 +20,10 @@
             title: 'Reset System',
             route: route('admin.settings.reset-system'),
         },
+        {
+            title: 'Go Frontend',
+            route: '/',
+        },
     ]
 
     function drawerClose(): void {

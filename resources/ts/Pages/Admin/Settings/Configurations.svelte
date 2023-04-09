@@ -6,7 +6,7 @@
     import type { SystemConfiguration } from '@/types'
     import { modalStore } from '@skeletonlabs/skeleton'
     import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
-    import ConfigurationModal from './ConfigurationModal.svelte'
+    import ConfigurationModal from '../Components/ConfigurationModal.svelte'
 
     export let configurations: SystemConfiguration[]
     let search: string | undefined

@@ -14,12 +14,23 @@ export const snakeCaseToSentenceCaseCapitalizeWords = (value: string | null) => 
 
 
 /**
- * format a post date
+ * format a date
  * @param dt Date
  * @param format string
  * @returns string
  */
 export const formatDate = (dt: Date | null | undefined, format = 'DD MMMM, YYYY') => {
+    if (!dt) return null;
+    return dayjs(dt).format(format);
+}
+
+/**
+ * format a date and cinldue time by default
+ * @param dt Date
+ * @param format string
+ * @returns string
+ */
+export const formatDateTime = (dt: Date | null | undefined, format = 'DD MMMM, YYYY HH:mm a') => {
     if (!dt) return null;
     return dayjs(dt).format(format);
 }

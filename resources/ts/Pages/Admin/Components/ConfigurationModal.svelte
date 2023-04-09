@@ -3,7 +3,6 @@
     import { useForm } from '@inertiajs/svelte'
     import type { SystemConfiguration } from '@/types'
     import { snakeCaseToSentenceCaseCapitalizeWords } from '@/helpers'
-    import {} from 'os'
     import Button from '@/Components/Button.svelte'
 
     // Base Classes

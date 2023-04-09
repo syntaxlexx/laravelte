@@ -50,7 +50,7 @@ class ResetSystem
 
         if($request->isMethod('get')) {
 
-            return $this->generateBackendPage('Admin/Settings/ResetSystem', [
+            return $this->generateBackendPage('Settings/ResetSystem', [
                 'actions' => $actions,
             ]);
         }

@@ -62,7 +62,13 @@
                     <tr>
                         {#each headers as header}
                             <th>
-                                {header}
+                                {#if typeof header === 'object'}
+                                    <span sytle="text-align: {header.align}">
+                                        {header.text}
+                                    </span>
+                                {:else}
+                                    {header}
+                                {/if}
                             </th>
                         {/each}
                     </tr>
@@ -83,7 +89,13 @@
                         <tr>
                             {#each headers as header}
                                 <th>
-                                    {header}
+                                    {#if typeof header === 'object'}
+                                        <span sytle="text-align: {header.align}">
+                                            {header.text}
+                                        </span>
+                                    {:else}
+                                        {header}
+                                    {/if}
                                 </th>
                             {/each}
                         </tr>

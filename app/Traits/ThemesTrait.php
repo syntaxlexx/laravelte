@@ -55,7 +55,9 @@ trait ThemesTrait
             $params['title'] = $this->generateTitleFromComponentName($component);
         }
 
-        return inertia($component, $params);
+        $prefix = doe()->isAdmin || doe()->isSudo ? 'Admin/' : 'User/';
+
+        return inertia($prefix . $component, $params);
     }
 
     /**

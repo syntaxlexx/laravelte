@@ -43,7 +43,7 @@
         const confirm: ModalSettings = {
             type: 'confirm',
             title: 'Logout?',
-            body: 'Are you sure youwant to logout?',
+            body: 'Are you sure you want to logout?',
             response: (r: boolean) => {
                 if (r) {
                     $form.post(route('logout'), {

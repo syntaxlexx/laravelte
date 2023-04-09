@@ -16,7 +16,7 @@ class Dashboard
             return redirect()->route('user.dashboard');
         }
 
-        return $this->generateBackendPage('Admin/Dashboard', [
+        return $this->generateBackendPage('Dashboard', [
             'title' => "Welcome Back, " . doe()->full_name,
         ]);
     }

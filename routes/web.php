@@ -64,8 +64,8 @@ Route::middleware([
     Route::get('/dashboard', UserRedirector::class)->name('dashboard');
 
     // user
-    include 'modules/user-web.php';
+    include 'modules/user.php';
 
     // admin
-    include 'modules/admin-web.php';
+    include 'modules/admin.php';
 });

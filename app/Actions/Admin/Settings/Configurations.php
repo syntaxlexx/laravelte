@@ -19,7 +19,7 @@ class Configurations
         $data = Configuration::get();
 
         if($request->isMethod('get')) {
-            return $this->generateBackendPage('Admin/Settings/Configurations', [
+            return $this->generateBackendPage('Settings/Configurations', [
                 'configurations' => $data,
             ]);
         }

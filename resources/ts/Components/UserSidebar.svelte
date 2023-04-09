@@ -10,15 +10,11 @@
     const navItems: NavItem[] = [
         {
             title: 'Dashboard',
-            route: route('admin.dashboard'),
+            route: route('user.dashboard'),
         },
         {
-            title: 'Configurations',
-            route: route('admin.settings.configurations'),
-        },
-        {
-            title: 'Reset System',
-            route: route('admin.settings.reset-system'),
+            title: ' My Profile',
+            route: route('user.dashboard'),
         },
         {
             title: 'Go Home',

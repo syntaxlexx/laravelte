@@ -13,7 +13,6 @@
     {#if ready}
         <div in:fly={{ y: -70, duration: 300, easing: quintOut }}>
             <Title>User Dashboard</Title>
-            <a href="/" use:inertia>Go Home</a>
         </div>
     {/if}
 </div>

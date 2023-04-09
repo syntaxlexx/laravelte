@@ -2,7 +2,7 @@
 - [x] Homepage
 - [x] Footer
 - [x] About us page
-- [ ] Contact us page
+- [x] Contact us page
 - [x] Login
 - [x] Register
 - [ ] Forgot Password
@@ -11,7 +11,7 @@
 - [x] Admin - dashboard
 - [x] Admin - configurations
 - [x] Admin - reset system
-- [ ] Admin Contact us messages 
+- [x] Admin Contact us messages 
 - [ ] Admin - profile
 - [x] User - dashboard
 - [ ] User - profile
@@ -28,7 +28,7 @@
 - [ ] Social logins (Socialite)
 - [ ] Admin - dashboard
 - [ ] Admin - configurations
-- [ ] Admin - manage contact form messages
+- [x] Admin - manage contact form messages
 - [ ] Admin - reset system
 - [ ] Admin - profile
 - [ ] User - dashboard

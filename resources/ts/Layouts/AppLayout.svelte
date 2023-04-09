@@ -85,11 +85,15 @@
                         <LightSwitch />
                     </div>
 
-                    <span class="">
+                    <span class="mr-2">
                         <a href={route('contact')} use:inertia class="btn btn-sm variant-ghost-surface">
                             <i class="bx bx-support text-[20px]" />
                             Talk to Us
                         </a>
+                    </span>
+
+                    <span class="">
+                        <a href={route('demo')} use:inertia class="btn btn-sm variant-ghost-surface"> Demo </a>
                     </span>
 
                     <button

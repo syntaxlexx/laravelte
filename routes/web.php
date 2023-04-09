@@ -48,10 +48,9 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 })->name('change-language');
 
-Route::get('/demo', function() {
+Route::get('/demo', function () {
     return redirect()->to(route('login', [
-        'username' => config('system.default.demo_username'),
-        'password' => config('system.default.demo_password'),
+        'is_demo' => true,
     ]));
 })->name('demo');
 

@@ -130,6 +130,7 @@ return [
         'login' => '6,1',
         'registration' => '6,1',
         'verification' => '6,1',
+        'contact' => '6,1',
     ]
 
 ];

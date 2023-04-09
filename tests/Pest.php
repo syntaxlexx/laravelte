@@ -145,4 +145,6 @@ function assertBrowserSuccess($response) : void
 function increaseThrottles() : void {
     Config::set('auth.limiters.registration', '50,1');
     Config::set('auth.limiters.login', '50,1');
+    Config::set('auth.limiters.verification', '50,1');
+    Config::set('auth.limiters.contact', '50,1');
 }

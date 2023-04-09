@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Home::class)->name('home');
 Route::get('/about', About::class)->name('about');
 Route::get('/contact', Contact::class)->name('contact');
+Route::post('/contact', Contact::class)->middleware('throttle:' . config('auth.limiters.contact'))->name('contact.store');
 Route::get('/policy-pages/{slug?}', PolicyPages::class)->name('policy-pages');
 
 

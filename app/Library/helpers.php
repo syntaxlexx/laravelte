@@ -341,3 +341,35 @@ if (! function_exists('adminUsers'))
         return User::admins()->get();
     }
 }
+
+
+if(! function_exists('sanitizeDomainUrl'))
+{
+    /**
+     * Sanitize URL
+     *
+     * @var string $str
+     * @return string
+     */
+    function sanitizeDomainUrl($str = "") : string
+    {
+        empty($str) ? $str = request()->root() : null;
+
+        // $input = 'www.google.co.uk/';
+        // in case scheme relative URI is passed, e.g., //www.google.com/
+        $str = trim($str, '/');
+
+        // If scheme not included, prepend it
+        if (! preg_match('#^http(s)?://#', $str)) {
+            $str = 'http://' . $str;
+        }
+
+        $urlParts = parse_url($str);
+
+        // remove www
+        $domain = preg_replace('/^www\./', '', $urlParts['host']);
+
+        // output: google.co.uk
+        return $domain;
+    }
+}

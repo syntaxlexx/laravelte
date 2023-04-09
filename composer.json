@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.8",
         "lorisleiva/laravel-actions": "^2.5",
         "predis/predis": "^2.1",
+        "stevebauman/location": "^6.6",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

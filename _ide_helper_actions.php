@@ -7,6 +7,18 @@ namespace App\Actions\Admin;
 class Dashboard
 {
 }
+namespace App\Actions\Admin\Settings;
+
+/**
+ */
+class Configurations
+{
+}
+/**
+ */
+class ResetSystem
+{
+}
 namespace App\Actions\Auth;
 
 /**
@@ -28,12 +40,22 @@ namespace App\Actions\Auth\Pages;
 
 /**
  */
+class ForgotPassword
+{
+}
+/**
+ */
 class Login
 {
 }
 /**
  */
 class Register
+{
+}
+/**
+ */
+class ResetPassword
 {
 }
 namespace App\Actions\Frontend;
@@ -51,6 +73,11 @@ class Contact
 /**
  */
 class Home
+{
+}
+/**
+ */
+class PolicyPages
 {
 }
 namespace App\Actions\User;

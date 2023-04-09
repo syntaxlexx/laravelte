@@ -14,3 +14,12 @@ export type SystemConfiguration = {
     description?: string,
     hint?: string,
 }
+
+export type ContactMessage = {
+    id?: number,
+    subject: string,
+    message: string,
+    phone?: string,
+    email?: string,
+    last_read_at?: Date,
+}

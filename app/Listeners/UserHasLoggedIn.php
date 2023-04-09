@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Jobs\SendLoginAlertEmail;
 use App\Models\UserLogin;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -34,14 +35,14 @@ class UserHasLoggedIn
         $userLogin->referer = $requestData['referer'];
         $userLogin->host = $requestData['host'];
         $userLogin->notes = 'Device name: ' . $requestData['device_name'];
+        $userLogin->save();
 
         $user->update([
             'last_login_at' => now(),
             'last_login_ip' => $requestData['ip'],
         ]);
 
-        // TODO: dispatch a job for sending mail
-        // dispatch(new SendLoginAlertEmail($user, $requestData));
+        dispatch(new SendLoginAlertEmail($user, $requestData));
 
     }
 }

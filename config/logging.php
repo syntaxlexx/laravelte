@@ -126,6 +126,113 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        /*
+        |--------------------------------------------------------------------------
+        | Custom Logging files
+        |--------------------------------------------------------------------------
+        |
+        | This table keeps track of all the migrations that have already run for
+        | your application. Using this information, we can determine which of
+        | the migrations on disk haven't actually been run in the database.
+        |
+        */
+
+        'user-logins' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/user-logins.log'),
+            'level' => 'debug',
+        ],
+
+        'new-user' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/new-user.log'),
+            'level' => 'debug',
+        ],
+
+        'sudo-logins' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/sudo-logins.log'),
+            'level' => 'debug',
+        ],
+
+        'password-changes' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/password-changes.log'),
+            'level' => 'debug',
+        ],
+
+        'user-roles-updated' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/user-roles-updated.log'),
+            'level' => 'debug',
+        ],
+
+        'sms-sent' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/sms-sent.log'),
+            'level' => 'debug',
+        ],
+
+        'sms-not-sent' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/sms-not-sent.log'),
+            'level' => 'debug',
+        ],
+
+        'test-queue' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/test-queue.log'),
+            'level' => 'debug',
+        ],
+
+        'mail-log' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/mail-log.log'),
+            'level' => 'debug',
+        ],
+
+        'custom-emails' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/custom-emails.log'),
+            'level' => 'debug',
+        ],
+
+        'emails-sent' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/emails-sent.log'),
+            'level' => 'debug',
+        ],
+
+        'emails-received' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/emails-received.log'),
+            'level' => 'debug',
+        ],
+
+        'user-account-status' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/user-account-status.log'),
+            'level' => 'debug',
+        ],
+
+        'bash-commands' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/bash-commands.log'),
+            'level' => 'debug',
+        ],
+
+        'payments-log' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/payments-log.log'),
+            'level' => 'debug',
+        ],
+
+        'scheduler' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/scheduler.log'),
+            'level' => 'debug',
+        ],
     ],
 
 ];

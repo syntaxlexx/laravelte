@@ -52,7 +52,9 @@
                             </form>
 
                             <span class="hidden lg:block">
-                                <a class="btn btn-sm variant-ghost-surface" href="/dashboard" use:inertia> Profile </a>
+                                <a class="btn btn-sm variant-ghost-surface" href={route('user.profile')} use:inertia>
+                                    Profile
+                                </a>
                             </span>
                         </svelte:fragment>
                     </AppBar>

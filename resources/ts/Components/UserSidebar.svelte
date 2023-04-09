@@ -14,7 +14,7 @@
         },
         {
             title: ' My Profile',
-            route: route('user.dashboard'),
+            route: route('user.profile'),
         },
         {
             title: 'Go Home',

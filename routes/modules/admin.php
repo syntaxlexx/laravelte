@@ -3,6 +3,7 @@
 use App\Actions\Admin\Cms\ContactMessages;
 use App\Actions\Admin\CMS\ContactMessagesDelete;
 use App\Actions\Admin\Dashboard;
+use App\Actions\Admin\Profile\MainProfile;
 use App\Actions\Admin\Settings\Configurations;
 use App\Actions\Admin\Settings\ResetSystem;
 use App\Models\User;
@@ -17,6 +18,10 @@ Route::group([
 ], function() {
 
     Route::get('/', Dashboard::class)->name('dashboard');
+
+    Route::group(['prefix' => 'profile'], function() {
+        Route::get('/', MainProfile::class)->name('profile');
+    });
 
     Route::group(['prefix'=> 'settings', 'as' => 'settings.'], function() {
         Route::match(['GET', 'POST'], '/configurations', Configurations::class)->name('configurations');

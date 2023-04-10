@@ -129,7 +129,7 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-        run: ./vendor/bin/pest
+        run: ./vendor/bin/pest --parallel
 
       # Deploy to prod server
       - name: Deploying System

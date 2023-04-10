@@ -13,6 +13,7 @@
 - [x] Admin - reset system
 - [x] Admin Contact us messages 
 - [ ] Admin - profile
+- [ ] Admin - User mgmt
 - [x] User - dashboard
 - [ ] User - profile
 
@@ -31,5 +32,6 @@
 - [x] Admin - manage contact form messages
 - [ ] Admin - reset system
 - [ ] Admin - profile
+- [ ] Admin - User mgmt
 - [ ] User - dashboard
 - [ ] User - profile

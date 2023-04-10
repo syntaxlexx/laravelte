@@ -21,7 +21,8 @@
         <div class="w-full lg:w-1/2">
             <div class="p-4">
                 {#if country}
-                    <p>Visiting us from {country}? We might be 50% right 🙃</p>
+                    <p>Visiting us from {country}? Hi 🙃. We might be 50% wrong though.</p>
+                    <br />
                     <div style="width: 100%">
                         <iframe
                             width="100%"

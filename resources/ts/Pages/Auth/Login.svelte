@@ -43,8 +43,8 @@
                     <div class="flex justify-between">
                         <div>
                             <p>Admin</p>
-                            <p>username: <strong>acelords</strong></p>
-                            <p>Password: <strong>acelords</strong></p>
+                            <p>username: <strong>admin</strong></p>
+                            <p>Password: <strong>admin</strong></p>
                         </div>
                         <div>
                             <p>User</p>

@@ -4,10 +4,15 @@
 
     const dispatch = createEventDispatcher()
 
+    type ObjectHeader = {
+        text: string
+        align: 'left' | 'right' | 'center'
+    }
+
     export let hasBorder: boolean | undefined = undefined
     export let hasSearch: boolean | undefined = undefined
     export let hasFooter: boolean | undefined = undefined
-    export let headers: string[] = []
+    export let headers: string[] | ObjectHeader[] = []
     export let emptyText: string = 'No data found'
 
     export let placeholder: string = 'Search'
@@ -63,7 +68,7 @@
                         {#each headers as header}
                             <th>
                                 {#if typeof header === 'object'}
-                                    <span sytle="text-align: {header.align}">
+                                    <span style="text-align: {header.align}">
                                         {header.text}
                                     </span>
                                 {:else}

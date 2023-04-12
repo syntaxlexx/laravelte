@@ -1,10 +1,31 @@
 <?php
 
+namespace App\Actions\Admin\CMS;
+
+/**
+ */
+class ContactMessagesDelete
+{
+}
+namespace App\Actions\Admin\Cms;
+
+/**
+ */
+class ContactMessages
+{
+}
 namespace App\Actions\Admin;
 
 /**
  */
 class Dashboard
+{
+}
+namespace App\Actions\Admin\Profile;
+
+/**
+ */
+class MainProfile
 {
 }
 namespace App\Actions\Admin\Settings;
@@ -85,6 +106,13 @@ namespace App\Actions\User;
 /**
  */
 class Dashboard
+{
+}
+namespace App\Actions\User\Profile;
+
+/**
+ */
+class MainProfile
 {
 }
 namespace App\Actions;

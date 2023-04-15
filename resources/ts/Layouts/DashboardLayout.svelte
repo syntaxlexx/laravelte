@@ -102,7 +102,9 @@
                 </div>
             </div>
 
-            <slot />
+            <main class="container px-2 md:px-4 lg:px-5">
+                <slot />
+            </main>
         </div>
     </div>
 </MainLayout>

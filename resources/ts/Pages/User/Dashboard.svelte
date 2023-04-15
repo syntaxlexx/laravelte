@@ -9,7 +9,7 @@
     onMount(() => (ready = true))
 </script>
 
-<div class="container mt-5">
+<div class="mt-5">
     {#if ready}
         <div in:fly={{ y: -70, duration: 300, easing: quintOut }}>
             <Title>User Dashboard</Title>

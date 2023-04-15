@@ -3,6 +3,8 @@
     import MainLayout from './MainLayout.svelte'
     import { page, inertia, useForm } from '@inertiajs/svelte'
     import Footer from '@/Components/Footer.svelte'
+    import { confirmAction } from '@/helpers'
+    import { toasts } from 'svelte-toasts'
 
     $: auth = $page.props.auth.user
 
@@ -41,26 +43,13 @@
         isNavCollapsed = true
         e.preventDefault()
 
-        // const confirm: ModalSettings = {
-        //     type: 'confirm',
-        //     title: 'Logout?',
-        //     body: 'Are you sure you want to logout?',
-        //     response: (r: boolean) => {
-        //         if (r) {
-        //             $form.post(route('logout'), {
-        //                 onSuccess: () => {
-        //                     const t: ToastSettings = {
-        //                         message: 'Logged out',
-        //                         background: 'variant-filled-success',
-        //                     }
-        //                     toastStore.trigger(t)
-        //                 },
-        //             })
-        //         }
-        //     },
-        // }
-
-        // modalStore.trigger(confirm)
+        confirmAction('Are you sure you want to logout?', () => {
+            $form.post(route('logout'), {
+                onSuccess: () => {
+                    toasts.success('Logged out')
+                },
+            })
+        })
     }
 </script>
 

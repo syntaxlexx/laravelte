@@ -27,7 +27,11 @@
     function handleSubmit(e) {
         e.preventDefault()
 
-        $form.post(route('login'))
+        $form.post(route('login'), {
+            onSuccess: resp => {
+                window.location.reload()
+            },
+        })
     }
 </script>
 

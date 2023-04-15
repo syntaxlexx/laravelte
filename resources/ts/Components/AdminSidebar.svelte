@@ -47,7 +47,7 @@
             icon: 'user',
         },
         {
-            title: 'Go Home',
+            title: 'Go Frontend',
             route: '/',
             icon: 'arrow-back',
         },

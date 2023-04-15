@@ -3,8 +3,8 @@
     import { fly } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
-    import { ProgressRadial } from '@skeletonlabs/skeleton'
     import Alert from '@/Components/Alert.svelte'
+    import { Button, Input, Loading, Title } from '@/Components'
 
     let ready = false
     onMount(() => (ready = true))
@@ -15,7 +15,7 @@
     let form = useForm({
         username: '',
         password: '',
-        confirmPassword: '',
+        password_confirmation: '',
         phone: '',
         email: '',
         first_name: '',
@@ -33,118 +33,84 @@
     {#if ready}
         {#if canRegister}
             <div class="mx-auto max-w-lg" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
-                <h2 class="text-center">Register</h2>
+                <Title>Register</Title>
                 <p class="text-center">Fill in the form below</p>
                 <br />
                 <form on:submit|preventDefault={handleSubmit}>
-                    <label class="label">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.username}
-                            type="text"
-                            placeholder="Username / Email"
-                            bind:value={$form.username}
-                        />
-                    </label>
+                    <Input
+                        name="username"
+                        label="Username"
+                        oneLine
+                        hasError={$form.errors.username}
+                        type="text"
+                        placeholder="Username"
+                        bind:value={$form.username}
+                        required
+                    />
 
-                    {#if $form.errors.username}
-                        <div class="form-error">{$form.errors.username}</div>
-                    {/if}
+                    <Input
+                        name="password"
+                        label="Password"
+                        oneLine
+                        hasError={$form.errors.password}
+                        type="password"
+                        placeholder="Password"
+                        bind:value={$form.password}
+                    />
 
-                    <label class="label my-3">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.username}
-                            type="password"
-                            placeholder="Password"
-                            bind:value={$form.password}
-                        />
-                    </label>
+                    <Input
+                        name="password"
+                        label="Confirm Password"
+                        oneLine
+                        hasError={$form.errors.password_confirmation}
+                        type="password"
+                        placeholder="Confirm Password"
+                        bind:value={$form.password_confirmation}
+                    />
 
-                    <label class="label my-3">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.confirmPassword}
-                            type="password"
-                            placeholder="Confirm Password"
-                            bind:value={$form.password}
-                        />
-                    </label>
+                    <Input
+                        name="email"
+                        label="Email"
+                        oneLine
+                        hasError={$form.errors.email}
+                        type="email"
+                        placeholder="email@gmail.com"
+                        bind:value={$form.email}
+                        required
+                    />
 
-                    {#if $form.errors.password}
-                        <div class="form-error">{$form.errors.password}</div>
-                    {/if}
+                    <Input
+                        name="phone"
+                        label="Phone"
+                        oneLine
+                        hasError={$form.errors.phone}
+                        type="tel"
+                        placeholder="[+country code][number]"
+                        bind:value={$form.phone}
+                    />
 
-                    <label class="label my-3">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.email}
-                            type="email"
-                            placeholder="Email"
-                            bind:value={$form.email}
-                        />
-                    </label>
+                    <Input
+                        name="first_name"
+                        label="First Name"
+                        oneLine
+                        hasError={$form.errors.first_name}
+                        type="text"
+                        placeholder="John"
+                        bind:value={$form.first_name}
+                        required
+                    />
 
-                    {#if $form.errors.email}
-                        <div class="form-error">{$form.errors.email}</div>
-                    {/if}
+                    <Input
+                        name="last_name"
+                        label="Last Name"
+                        oneLine
+                        hasError={$form.errors.last_name}
+                        type="text"
+                        placeholder="Doe"
+                        bind:value={$form.last_name}
+                    />
 
-                    <label class="label my-3">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.phone}
-                            type="tel"
-                            placeholder="Phone"
-                            bind:value={$form.phone}
-                        />
-                    </label>
-
-                    {#if $form.errors.phone}
-                        <div class="form-error">{$form.errors.phone}</div>
-                    {/if}
-
-                    <label class="label my-3">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.first_name}
-                            type="text"
-                            placeholder="First Name"
-                            bind:value={$form.first_name}
-                        />
-                    </label>
-
-                    {#if $form.errors.first_name}
-                        <div class="form-error">{$form.errors.first_name}</div>
-                    {/if}
-
-                    <label class="label my-3">
-                        <input
-                            class="input"
-                            class:input-error={$form.errors.last_name}
-                            type="text"
-                            placeholder="Last Name"
-                            bind:value={$form.last_name}
-                        />
-                    </label>
-
-                    {#if $form.errors.last_name}
-                        <div class="form-error">{$form.errors.last_name}</div>
-                    {/if}
-
-                    <button class="btn variant-filled w-full" type="submit" disabled={$form.processing}>
-                        Register
-
-                        {#if $form.processing}
-                            <span class="ml-4">
-                                <ProgressRadial
-                                    width="w-8"
-                                    stroke={100}
-                                    meter="stroke-primary-500"
-                                    track="stroke-primary-500/30"
-                                />
-                            </span>
-                        {/if}
-                    </button>
+                    <Button type="submit" block loading={$form.processing}>Register</Button>
                 </form>
             </div>
         {:else}

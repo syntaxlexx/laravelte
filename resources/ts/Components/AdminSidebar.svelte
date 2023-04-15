@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { drawerStore } from '@skeletonlabs/skeleton'
     import { inertia, page } from '@inertiajs/svelte'
 
     type NavItem = {
@@ -27,7 +26,7 @@
     ]
 
     function drawerClose(): void {
-        drawerStore.close()
+        // drawerStore.close()
     }
 </script>
 

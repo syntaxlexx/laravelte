@@ -3,7 +3,7 @@
     import { fly } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
-    import { ProgressRadial } from '@skeletonlabs/skeleton'
+    import { Button, Input, Loading, Title } from '@/Components'
 
     let ready = false
     onMount(() => (ready = true))
@@ -34,7 +34,7 @@
 <div class="container page-padding">
     {#if ready}
         <div class="mx-auto max-w-lg" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
-            <h2 class="text-center">Login</h2>
+            <Title>Login</Title>
             <p class="text-center">Fill in the form below</p>
             <br />
             {#if is_demo}
@@ -56,64 +56,46 @@
                 <br />
             {/if}
             <form on:submit|preventDefault={handleSubmit}>
-                <label class="label">
-                    <input
-                        class="input"
-                        class:input-error={$form.errors.username}
-                        type="text"
-                        placeholder="Username / Email"
-                        bind:value={$form.username}
-                    />
-                </label>
+                <Input
+                    name="username"
+                    hasError={$form.errors.username}
+                    type="text"
+                    placeholder="Username / Email"
+                    bind:value={$form.username}
+                />
 
-                {#if $form.errors.username}
-                    <div class="form-error">{$form.errors.username}</div>
-                {/if}
+                <div class="my-3 relative">
+                    {#if showPassword}
+                        <Input
+                            name="username"
+                            hasError={$form.errors.username}
+                            type="text"
+                            placeholder="Password"
+                            bind:value={$form.password}
+                        />
+                    {:else}
+                        <Input
+                            name="username"
+                            hasError={$form.errors.username}
+                            type="password"
+                            placeholder="Password"
+                            bind:value={$form.password}
+                        />
+                    {/if}
 
-                <label class="label my-3">
-                    <div class="input-group input-group-divider grid-cols-[1fr_auto]">
-                        {#if showPassword}
-                            <input
-                                class="input"
-                                class:input-error={$form.errors.username}
-                                type="text"
-                                placeholder="Password"
-                                bind:value={$form.password}
-                            />
-                        {:else}
-                            <input
-                                class="input"
-                                class:input-error={$form.errors.username}
-                                type="password"
-                                placeholder="Password"
-                                bind:value={$form.password}
-                            />
-                        {/if}
-                        <button type="button" on:click={() => (showPassword = !showPassword)}>
-                            <i class="bx bx-lock" />
+                    <div class="absolute right-5 top-2">
+                        <button class="no-style" type="button" on:click={() => (showPassword = !showPassword)}>
+                            <i class="bx bx-lock text-lg" />
                         </button>
                     </div>
-                </label>
+                </div>
 
                 <!-- <label class="flex items-center space-x-2  my-3 ml-1">
                     <input class="checkbox" type="checkbox" bind:checked={$form.remember} />
                     <p>Remember Me</p>
                 </label> -->
 
-                <button class="btn variant-filled w-full" type="submit" disabled={$form.processing}>
-                    Submit
-
-                    {#if $form.processing}
-                        <span class="ml-4">
-                            <ProgressRadial
-                                width="w-8"
-                                stroke={100}
-                                meter="stroke-primary-500"
-                                track="stroke-primary-500/30"
-                            />
-                        </span>
-                    {/if}
-                </button>
+                <Button type="submit" block disabled={$form.processing} loading={$form.processing}>Submit</Button>
             </form>
 
             {#if canResetPassword}

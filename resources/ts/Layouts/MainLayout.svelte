@@ -1,19 +1,15 @@
 <script lang="ts">
-    import { AppShell, Toast, type ToastSettings, toastStore, Modal } from '@skeletonlabs/skeleton'
     import { page } from '@inertiajs/svelte'
+    import { ToastContainer, FlatToast, toasts } from 'svelte-toasts'
+    import { Modals, closeModal } from 'svelte-modals'
 
     $: title = `${$page.props.title ?? 'Welcome'} | ${$page.props.siteName}`
     $: flashMessage = $page.props.flash
 
-    export let withShell = false
-
     $: if (flashMessage && (flashMessage.success || flashMessage.error)) {
-        const t: ToastSettings = {
-            message: flashMessage.success || flashMessage.error,
-            background: $page.props.flash.success === null ? 'variant-filled-error' : 'variant-filled-primary',
-        }
-
-        toastStore.trigger(t)
+        $page.props.flash.success === null
+         ? toasts.error(flashMessage.error)
+         : toasts.success(flashMessage.success)
     }
 </script>
 
@@ -21,24 +17,14 @@
     <title>{title}</title>
 </svelte:head>
 
+<Modals>
+    <div slot="backdrop" class="backdrop" on:click={closeModal} tabindex="0" role="button" />
+</Modals>
+
 <div class="">
-    <Modal />
+	<slot />
 
-    {#if withShell}
-        <AppShell regionPage="overflow-y-auto relative h-screen scrollbar-hidden">
-            <Toast position="br" />
-            <svelte:fragment slot="header">
-                <slot name="header" />
-            </svelte:fragment>
-
-            <slot />
-
-            <svelte:fragment slot="pageFooter">
-                <slot name="footer" />
-            </svelte:fragment>
-        </AppShell>
-    {:else}
-        <Toast position="br" />
-        <slot />
-    {/if}
+    <ToastContainer placement="bottom-right" showProgress={true} width="320px" let:data>
+        <FlatToast {data} />
+    </ToastContainer>
 </div>

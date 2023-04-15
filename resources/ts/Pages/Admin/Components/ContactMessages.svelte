@@ -3,8 +3,6 @@
     import SimpleTable from '@/Components/SimpleTable.svelte'
     import type { ContactMessage, PaginationMeta } from '@/types'
     import axios from 'axios'
-    import { modalStore, toastStore } from '@skeletonlabs/skeleton'
-    import type { ModalSettings, ModalComponent, ToastSettings } from '@skeletonlabs/skeleton'
     import ContactMessagesModal from './ContactMessagesModal.svelte'
 
     let messages: ContactMessage[] = []
@@ -28,46 +26,44 @@
     fetch()
 
     function viewItem(item: ContactMessage) {
-        const modalComponent: ModalComponent = {
-            ref: ContactMessagesModal,
-            props: { message: item, title: item.name },
-            slot: '<p>Modal</p>',
-        }
-
-        const d: ModalSettings = {
-            type: 'component',
-            component: modalComponent,
-        }
-        modalStore.trigger(d)
+        // const modalComponent: ModalComponent = {
+        //     ref: ContactMessagesModal,
+        //     props: { message: item, title: item.name },
+        //     slot: '<p>Modal</p>',
+        // }
+        // const d: ModalSettings = {
+        //     type: 'component',
+        //     component: modalComponent,
+        // }
+        // modalStore.trigger(d)
     }
 
     function deleteItem(item: ContactMessage) {
-        const confirm: ModalSettings = {
-            type: 'confirm',
-            title: 'Delete?',
-            body: 'Are you sure you want to delete the item?',
-            response: (r: boolean) => {
-                if (r) {
-                    axios
-                        .delete(route('admin.cms.contact-messages.destroy', item.id), {
-                            headers: {
-                                Accept: 'application/json',
-                                'Content-Type': 'application/json',
-                            },
-                        })
-                        .then(resp => {
-                            const t: ToastSettings = {
-                                message: 'Deleted',
-                                background: 'variant-filled-success',
-                            }
-                            toastStore.trigger(t)
-                            fetch()
-                        })
-                }
-            },
-        }
-
-        modalStore.trigger(confirm)
+        // const confirm: ModalSettings = {
+        //     type: 'confirm',
+        //     title: 'Delete?',
+        //     body: 'Are you sure you want to delete the item?',
+        //     response: (r: boolean) => {
+        //         if (r) {
+        //             axios
+        //                 .delete(route('admin.cms.contact-messages.destroy', item.id), {
+        //                     headers: {
+        //                         Accept: 'application/json',
+        //                         'Content-Type': 'application/json',
+        //                     },
+        //                 })
+        //                 .then(resp => {
+        //                     const t: ToastSettings = {
+        //                         message: 'Deleted',
+        //                         background: 'variant-filled-success',
+        //                     }
+        //                     toastStore.trigger(t)
+        //                     fetch()
+        //                 })
+        //         }
+        //     },
+        // }
+        // modalStore.trigger(confirm)
     }
 </script>
 

@@ -1,47 +1,38 @@
-@import '@skeletonlabs/skeleton/themes/theme-sahara.css';
-@import '@skeletonlabs/skeleton/styles/all.css';
+@import 'sweetalert2/dist/sweetalert2.min.css';
 
-:root {
-    --theme-font-color-base: 143 35 27;
-    /* --on-primary: 0 0 0; */
-    /* primary | #ef3b2d */
-    /* ⬅ #fde2e0 */
-    /* --color-primary-50: 253 226 224;  */
-    /* ⬅ #fcd8d5 */
-    /* --color-primary-100: 252 216 213;  */
-    /* ⬅ #fbcecb */
-    /* --colo/r-primary-200: 251 206 203;  */
-    /* ⬅ #f9b1ab */
-    /* --color-primary-300: 249 177 171;  */
-    /* ⬅ #f4766c */
-    /* --color-primary-400: 244 118 108;  */
-    /* ⬅ #ef3b2d */
-    /* --color-primary-500: 239 59 45;  */
-    /* ⬅ #d73529 */
-    /* --color-primary-600: 215 53 41;  */
-    /* ⬅ #b32c22 */
-    /* --color-primary-700: 179 44 34;  */
-    /* ⬅ #8f231b */
-    /* --color-primary-800: 143 35 27;  */
-    /* ⬅ #751d16 */
-    /* --color-primary-900: 117 29 22;  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	font-family: 'Poppins', sans-serif;
+	@apply min-h-screen font-light bg-primary-50 dark:bg-primary-900;
 }
 
+body, p, h1, h2, h3 {
+	@apply  text-primary-900 dark:text-primary-100;
+}
+.title {
+	@apply  text-primary-800 dark:text-primary-200;
+}
+
+.prata {
+	font-family: 'Prata', serif;
+}
 .inter {
     font-family: 'Inter', sans-serif;
 }
 .roboto {
     font-family: 'Roboto', sans-serif;
 }
-.modal-footer {
-    @apply mt-5;
-}
 
-.table-container {
-    width: 100%;
-    overflow-x: auto;
+.text-error,
+.text-danger, .form-error {
+	@apply text-xs py-2 text-red-500 dark:text-red-600 leading-tight;
 }
-
+.form-error {
+   @apply text-right;
+}
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
@@ -49,12 +40,70 @@
 figcaption {
     @apply text-sm italic mt-1;
 }
-a.no-underline {
-    @apply !no-underline;
+a {
+    @apply no-underline underline-offset-4  hover:underline text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-300;
 }
 .page-padding {
     @apply mt-28 mb-12;
 }
 .page-top-padding {
     @apply mt-28;
+}
+
+/* ========== Table =========== */
+.table-responsive {
+	@apply overflow-x-auto;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* =========== modal ================= */
+.backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 10;
+}
+.modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+
+	/* allow click-through to backdrop */
+	pointer-events: none;
+}
+.modal-content-container {
+	@apply relative w-full h-full max-w-2xl md:h-auto;
+	pointer-events: auto;
+}
+.modal-content {
+	@apply relative bg-white rounded-lg shadow dark:bg-gray-700;
+}
+.modal-header {
+	@apply flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600;
+}
+.modal-title {
+	@apply text-xl font-semibold text-gray-900 dark:text-white;
+}
+.modal-close {
+	@apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white;
+}
+.modal-body {
+	@apply p-6 space-y-6;
+}
+.modal-footer {
+	@apply mt-3 p-6 space-y-6 border-t border-gray-600 flex justify-end items-center gap-3;
 }

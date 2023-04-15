@@ -117,6 +117,8 @@ class UserRepository
             }
 
             $user = User::create($data);
+
+            DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Title from '@/Components/Title.svelte'
+    import { Title } from '@/Components'
 </script>
 
 <div class="container mt-5">

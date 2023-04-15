@@ -1,16 +1,25 @@
 <script lang="ts">
     export let name = 'bx bxs-pencil'
+    export let classes: string = ''
 
     $: iconName = () => {
         switch (name) {
             case 'edit':
-                return 'bx bxs-pencil'
+                return 'bx bx-pencil'
             case 'delete':
-                return 'bx bxs-trash'
+                return 'bx bx-trash-alt'
+            case 'email':
+                return 'bx bx-envelope'
+            case 'phone':
+                return 'bx bx-phone'
+            case 'deactivate':
+                return 'bx bx-error-circle'
+            case 'check':
+                return 'bx bx-check'
         }
 
-        return name
+        return `bx bx-${name}`
     }
 </script>
 
-<i class={iconName()} />
+<i class={iconName() + ' ' + classes} {...$$restProps} />

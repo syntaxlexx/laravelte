@@ -1,8 +1,6 @@
 <script lang="ts">
     import MainLayout from './MainLayout.svelte'
-    import { AppBar, AppShell } from '@skeletonlabs/skeleton'
     import { page, inertia, useForm } from '@inertiajs/svelte'
-    import { LightSwitch, Drawer, drawerStore } from '@skeletonlabs/skeleton'
     import AdminSidebar from '@/Components/AdminSidebar.svelte'
 
     $: auth = $page.props.auth.user
@@ -16,7 +14,7 @@
     }
 
     function drawerOpen(): void {
-        drawerStore.open({})
+        // drawerStore.open({})
     }
 </script>
 

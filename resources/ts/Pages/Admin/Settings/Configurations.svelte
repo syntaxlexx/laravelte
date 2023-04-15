@@ -4,8 +4,6 @@
     import Title from '@/Components/Title.svelte'
     import { snakeCaseToSentenceCaseCapitalizeWords } from '@/helpers'
     import type { SystemConfiguration } from '@/types'
-    import { modalStore } from '@skeletonlabs/skeleton'
-    import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton'
     import ConfigurationModal from '../Components/ConfigurationModal.svelte'
 
     export let configurations: SystemConfiguration[]
@@ -23,21 +21,21 @@
     function editItem(item: SystemConfiguration) {
         console.log('item', item)
 
-        const modalComponent: ModalComponent = {
-            // Pass a reference to your custom component
-            ref: ConfigurationModal,
-            // Add the component properties as key/value pairs
-            props: { configuration: item, title: 'Update Configuration' },
-            // Provide a template literal for the default component slot
-            slot: '<p>Modal</p>',
-        }
+        // const modalComponent: ModalComponent = {
+        //     // Pass a reference to your custom component
+        //     ref: ConfigurationModal,
+        //     // Add the component properties as key/value pairs
+        //     props: { configuration: item, title: 'Update Configuration' },
+        //     // Provide a template literal for the default component slot
+        //     slot: '<p>Modal</p>',
+        // }
 
-        const d: ModalSettings = {
-            type: 'component',
-            // Pass the component registry key as a string:
-            component: modalComponent,
-        }
-        modalStore.trigger(d)
+        // const d: ModalSettings = {
+        //     type: 'component',
+        //     // Pass the component registry key as a string:
+        //     component: modalComponent,
+        // }
+        // modalStore.trigger(d)
     }
 
     function handleSearch(e: CustomEvent) {

@@ -1,9 +1,8 @@
 <script lang="ts">
     import MainLayout from './MainLayout.svelte'
-    import { AppBar, AppShell } from '@skeletonlabs/skeleton'
     import { page, inertia, useForm } from '@inertiajs/svelte'
-    import { LightSwitch, Drawer, drawerStore } from '@skeletonlabs/skeleton'
     import UserSidebar from '@/Components/UserSidebar.svelte'
+    import { Button, Icon, ThemeSwitcher } from '@/Components'
 
     $: auth = $page.props.auth.user
 
@@ -16,67 +15,42 @@
     }
 
     function drawerOpen(): void {
-        drawerStore.open({})
+        // drawerStore.open({})
     }
 </script>
 
 <MainLayout>
-    <AppShell
-        slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64"
-        regionPage="overflow-y-auto relative h-screen scrollbar-hidden"
-    >
-        <svelte:fragment slot="header">
-            <div class="bg-surface-100-800-token">
-                <div class="container">
-                    <AppBar background="bg-transparent">
-                        <svelte:fragment slot="lead">
-                            <button class="lg:hidden btn btn-sm mr-4" on:click={drawerOpen}>
-                                <span>
-                                    <svg viewBox="0 0 100 80" class="fill-token w-4 h-4">
-                                        <rect width="100" height="20" />
-                                        <rect y="30" width="100" height="20" />
-                                        <rect y="60" width="100" height="20" />
-                                    </svg>
-                                </span>
-                            </button>
-                            <a href={route('user.dashboard')} use:inertia>
-                                <strong class="text-xl uppercase">{$page.props.siteName}</strong>
-                            </a>
-                        </svelte:fragment>
-
-                        <svelte:fragment slot="trail">
-                            <LightSwitch />
-
-                            <form on:submit|preventDefault={handleLogout}>
-                                <button type="submit" class="btn btn-sm variant-ghost-surface"> Logout </button>
-                            </form>
-
-                            <span class="hidden lg:block">
-                                <a class="btn btn-sm variant-ghost-surface" href={route('user.profile')} use:inertia>
-                                    Profile
-                                </a>
-                            </span>
-                        </svelte:fragment>
-                    </AppBar>
-                </div>
-            </div>
-        </svelte:fragment>
-
-        <!-- sidebar -->
-        <Drawer regionDrawer="mt-16 w-56 pb-16">
-            <UserSidebar />
-        </Drawer>
-
-        <svelte:fragment slot="sidebarLeft">
-            <div id="sidebar-left" class="hidden lg:block">
-                <div class="overflow-y-auto h-screen">
+    <div class="user-dashboard flex flex-wrap">
+        <div class="w-full md:w-72 hidden md:block">
+            <div class=" bg-gray-100 dark:bg-gray-800 h-full w-full">
+                <div class="p-5 pt-6">
                     <UserSidebar />
                 </div>
             </div>
-        </svelte:fragment>
+        </div>
 
-        <!-- content -->
-        <slot />
-        <div class="my-4" />
-    </AppShell>
+        <div class="w-full md:flex-1 bg-white dark:bg-gray-900">
+            <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <h3 class="text-xl font-semibold">
+                    {$page.props.title}
+                </h3>
+                <div />
+                <div class="flex gap-2 items-center">
+                    <Icon name="bell" classes="text-2xl text-gray-600 dark:text-gray-300" />
+                    <Icon name="message" classes="text-2xl text-gray-600 dark:text-gray-300" />
+                    <ThemeSwitcher />
+                    <Button size="sm">Share</Button>
+                    <Button size="sm" color="secondary">Create</Button>
+                </div>
+            </div>
+
+            <slot />
+        </div>
+    </div>
 </MainLayout>
+
+<style lang="css">
+    .user-dashboard {
+        @apply bg-gray-100 dark:bg-gray-800 min-h-screen;
+    }
+</style>

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { modalStore } from '@skeletonlabs/skeleton'
     import { useForm } from '@inertiajs/svelte'
     import type { SystemConfiguration } from '@/types'
     import { snakeCaseToSentenceCaseCapitalizeWords } from '@/helpers'
@@ -26,7 +25,7 @@
     function handleSubmit(): void {
         $form.post(route('admin.settings.configurations'), {
             onSuccess: () => {
-                modalStore.close()
+                // modalStore.close()
             },
         })
     }

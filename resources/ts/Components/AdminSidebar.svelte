@@ -43,7 +43,7 @@
         },
         {
             title: ' My Profile',
-            route: route('user.profile'),
+            route: route('admin.profile'),
             icon: 'user',
         },
         {

@@ -25,6 +25,11 @@ export type PaginationMeta = {
     per_page: number,
 }
 
+export type TableHeader = {
+    text: string
+    align: 'left' | 'right' | 'center'
+}
+
 export type ContactMessage = {
     id?: number,
     name: string,

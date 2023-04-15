@@ -1,13 +1,15 @@
 <script lang="ts">
-    import Circle from '@/Components/Circle.svelte'
-    import SimpleTable from '@/Components/SimpleTable.svelte'
-    import type { ContactMessage, PaginationMeta } from '@/types'
+    import type { ContactMessage, PaginationMeta, TableHeader } from '@/types'
     import axios from 'axios'
+    import { openModal } from 'svelte-modals'
     import ContactMessagesModal from './ContactMessagesModal.svelte'
+    import { Circle, SimpleTable } from '@/Components'
+    import { confirmAction } from '@/helpers'
+    import { toasts } from 'svelte-toasts'
 
     let messages: ContactMessage[] = []
     let meta: PaginationMeta
-    let headers = []
+    let headers: string[] | TableHeader[] = []
     let page = 1
 
     async function fetch() {
@@ -26,44 +28,24 @@
     fetch()
 
     function viewItem(item: ContactMessage) {
-        // const modalComponent: ModalComponent = {
-        //     ref: ContactMessagesModal,
-        //     props: { message: item, title: item.name },
-        //     slot: '<p>Modal</p>',
-        // }
-        // const d: ModalSettings = {
-        //     type: 'component',
-        //     component: modalComponent,
-        // }
-        // modalStore.trigger(d)
+        openModal(ContactMessagesModal, { message: item, title: item.name })
     }
 
     function deleteItem(item: ContactMessage) {
-        // const confirm: ModalSettings = {
-        //     type: 'confirm',
-        //     title: 'Delete?',
-        //     body: 'Are you sure you want to delete the item?',
-        //     response: (r: boolean) => {
-        //         if (r) {
-        //             axios
-        //                 .delete(route('admin.cms.contact-messages.destroy', item.id), {
-        //                     headers: {
-        //                         Accept: 'application/json',
-        //                         'Content-Type': 'application/json',
-        //                     },
-        //                 })
-        //                 .then(resp => {
-        //                     const t: ToastSettings = {
-        //                         message: 'Deleted',
-        //                         background: 'variant-filled-success',
-        //                     }
-        //                     toastStore.trigger(t)
-        //                     fetch()
-        //                 })
-        //         }
-        //     },
-        // }
-        // modalStore.trigger(confirm)
+        confirmAction('Are you sure you want to delete the item?', () => {
+            axios
+                .delete(route('admin.cms.contact-messages.destroy', item.id), {
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(resp => {
+                    toasts.success('Deleted')
+
+                    fetch()
+                })
+        })
     }
 </script>
 
@@ -85,7 +67,7 @@
                         </div>
                     </td>
                     <td>
-                        <Circle icon="delete" size="sm" on:click={() => deleteItem(item)} />
+                        <Circle size="n" icon="delete" on:click={() => deleteItem(item)} />
                     </td>
                 </tr>
             {/each}

@@ -1,10 +1,10 @@
 <script lang="ts">
     import Circle from '@/Components/Circle.svelte'
     import SimpleTable from '@/Components/SimpleTable.svelte'
-    import Title from '@/Components/Title.svelte'
     import { snakeCaseToSentenceCaseCapitalizeWords } from '@/helpers'
     import type { SystemConfiguration } from '@/types'
     import ConfigurationModal from '../Components/ConfigurationModal.svelte'
+    import { openModal } from 'svelte-modals'
 
     export let configurations: SystemConfiguration[]
     let search: string | undefined
@@ -19,23 +19,7 @@
     const headers = ['#', 'Name', 'Value', 'Action']
 
     function editItem(item: SystemConfiguration) {
-        console.log('item', item)
-
-        // const modalComponent: ModalComponent = {
-        //     // Pass a reference to your custom component
-        //     ref: ConfigurationModal,
-        //     // Add the component properties as key/value pairs
-        //     props: { configuration: item, title: 'Update Configuration' },
-        //     // Provide a template literal for the default component slot
-        //     slot: '<p>Modal</p>',
-        // }
-
-        // const d: ModalSettings = {
-        //     type: 'component',
-        //     // Pass the component registry key as a string:
-        //     component: modalComponent,
-        // }
-        // modalStore.trigger(d)
+        openModal(ConfigurationModal, { configuration: item, title: 'Update Configuration' })
     }
 
     function handleSearch(e: CustomEvent) {
@@ -43,9 +27,7 @@
     }
 </script>
 
-<div class="container mt-5">
-    <Title>Configurations</Title>
-    <br />
+<div class="">
     <SimpleTable {headers} hasFooter hasSearch on:search={handleSearch}>
         {#each filteredList as item, i}
             <tr>
@@ -61,8 +43,8 @@
                         {item.value}
                     {/if}
                 </td>
-                <td>
-                    <Circle icon="edit" on:click={() => editItem(item)} />
+                <td class="actions">
+                    <Circle size="n" icon="edit" on:click={() => editItem(item)} />
                 </td>
             </tr>
         {/each}

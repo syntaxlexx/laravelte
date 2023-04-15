@@ -33,6 +33,9 @@ body, p, h1, h2, h3 {
 .form-error {
    @apply text-right;
 }
+.checkbox {
+    @apply ml-2 text-sm font-medium text-gray-900 dark:text-gray-300
+}
 .scrollbar-hidden::-webkit-scrollbar {
     display: none;
 }
@@ -49,14 +52,49 @@ a {
 .page-top-padding {
     @apply mt-28;
 }
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 /* ========== Table =========== */
 .table-responsive {
-	@apply overflow-x-auto;
+    @apply overflow-x-auto relative shadow-md sm:rounded-lg;
+}
+table {
+    @apply w-full text-sm text-left rounded text-gray-500 dark:text-gray-400;
+}
+table caption {
+    @apply p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800;
 }
 
-.scrollbar-hidden::-webkit-scrollbar {
-    display: none;
+table caption p {
+    @apply mt-1 text-sm font-normal text-gray-500 dark:text-gray-400;
+}
+
+table thead,
+table tfoot {
+    @apply text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#2c3543] dark:text-gray-400;
+}
+
+table thead tr td,
+table thead tr th,
+table tfoot tr td,
+table tfoot tr th {
+    @apply py-3 px-6;
+}
+table tbody tr {
+    @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+table tbody tr th {
+    @apply py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white;
+}
+table tbody tr td {
+    @apply py-4 px-6;
+}
+table .actions {
+    @apply flex gap-2;
 }
 
 
@@ -105,5 +143,5 @@ a {
 	@apply p-6 space-y-6;
 }
 .modal-footer {
-	@apply mt-3 p-6 space-y-6 border-t border-gray-600 flex justify-end items-center gap-3;
+	@apply mt-3 p-6 space-y-6 border-t border-gray-600 flex justify-end items-baseline gap-3;
 }

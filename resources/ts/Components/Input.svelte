@@ -10,11 +10,12 @@
     export let classes: string = ''
     export let hasError: boolean | undefined = undefined
     export let oneLine: boolean | undefined = undefined
+    export let noMb: boolean | undefined = undefined // no margin bottom
 
     export let prefixIcon: string | undefined = undefined
 </script>
 
-<div class="mb-6">
+<div class:mb-6={!noMb}>
     <div class="flex {oneLine ? 'flex-row items-center' : 'flex-col'}">
         <div class={oneLine ? 'w-full md:w-2/4 lg:w-1/4' : ''}>
             {#if label}

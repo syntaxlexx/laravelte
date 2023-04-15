@@ -6,7 +6,7 @@
     const dispatch = createEventDispatcher()
 
     type ButtonSize = 'normal' | 'sm' | 'lg'
-    type ButtonColor = 'primary' | 'secondary' | 'tertiary'
+    type ButtonColor = 'primary' | 'secondary' | 'tertiary' | 'ghost'
 
     export let size: ButtonSize = 'normal'
     export let color: ButtonColor = 'primary'
@@ -53,6 +53,9 @@
     }
     button.tertiary {
         @apply bg-gradient-to-r from-tertiary-500 via-tertiary-600 to-tertiary-700 hover:opacity-70;
+    }
+    button.ghost {
+        @apply border border-primary-700 dark:border-primary-300 text-primary-800 dark:text-primary-200;
     }
     button.btn-sm {
         @apply py-1 lg:py-2 px-2 lg:px-3;

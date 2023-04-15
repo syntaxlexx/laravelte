@@ -1,4 +1,7 @@
+import Swal from 'sweetalert2';
 import dayjs from 'dayjs';
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 /**
  * convert snake case to sentence case, capitalizing all words

@@ -2,6 +2,7 @@
     import { Button, ThemeSwitcher } from '@/Components'
     import MainLayout from './MainLayout.svelte'
     import { page, inertia, useForm } from '@inertiajs/svelte'
+    import Footer from '@/Components/Footer.svelte'
 
     $: auth = $page.props.auth.user
 
@@ -76,12 +77,12 @@
             <!-- <div class="absolute top-0 left-0 right-0 bottom-0 bg-white opacity-90" /> -->
             <div class="container flex z-10 flex-wrap items-center justify-between mx-auto">
                 <a href="/" class="flex items-baseline">
-                    <img
+                    <!-- <img
                         src={$page.props.siteLogo}
                         class="h-6 w-auto mr-3 sm:h-9 max-w-[11rem] object-contain"
                         alt={$page.props.siteName}
-                    />
-                    <span class="sr-only self-center text-xl font-semibold whitespace-nowrap text-primary-700"
+                    /> -->
+                    <span class="self-center text-xl font-semibold whitespace-nowrap text-primary-700"
                         >{$page.props.siteName}</span
                     >
                 </a>
@@ -172,6 +173,9 @@
 
     <!-- content -->
     <slot />
+
+    <!-- footer -->
+    <Footer />
 </MainLayout>
 
 <style lang="css">

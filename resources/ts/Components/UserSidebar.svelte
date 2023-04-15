@@ -65,7 +65,7 @@
             <li>
                 <a
                     class="nav-item"
-                    class:bg-primary-active-token={item.route.endsWith($page.url)}
+                    class:active={item.route.endsWith($page.url)}
                     href={item.route}
                     use:inertia
                     on:click={handleClick}
@@ -93,5 +93,8 @@
 <style lang="css">
     .nav-item {
         @apply no-underline hover:no-underline px-3 py-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 flex gap-2 items-center text-gray-900 dark:text-gray-200 text-lg;
+    }
+    .nav-item.active {
+        @apply bg-gray-200  dark:bg-gray-700 border-l-4 border-gray-300 dark:border-gray-600;
     }
 </style>

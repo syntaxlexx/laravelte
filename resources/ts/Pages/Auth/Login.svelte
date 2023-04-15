@@ -107,9 +107,9 @@
 
             {#if canRegister}
                 <br />
-                <p>
+                <p class="text-right">
                     Don't have an account yet?
-                    <a href={route('register')}>Register here</a>
+                    <a href={route('register')} class="underline">Register here</a>
                 </p>
             {/if}
         </div>

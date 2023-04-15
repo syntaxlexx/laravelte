@@ -38,6 +38,17 @@
                 <br />
                 <form on:submit|preventDefault={handleSubmit}>
                     <Input
+                        name="email"
+                        label="Email"
+                        oneLine
+                        hasError={$form.errors.email}
+                        type="email"
+                        placeholder="email@gmail.com"
+                        bind:value={$form.email}
+                        required
+                    />
+
+                    <Input
                         name="username"
                         label="Username"
                         oneLine
@@ -66,17 +77,6 @@
                         type="password"
                         placeholder="Confirm Password"
                         bind:value={$form.password_confirmation}
-                    />
-
-                    <Input
-                        name="email"
-                        label="Email"
-                        oneLine
-                        hasError={$form.errors.email}
-                        type="email"
-                        placeholder="email@gmail.com"
-                        bind:value={$form.email}
-                        required
                     />
 
                     <Input

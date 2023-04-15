@@ -108,11 +108,17 @@ class UserRepository
             // set an appropriate (user)name if not provided
             if (!isset($data['name']) || empty($data['name'])) {
                 if (isset($data['first_name'])) {
-                    $data['name'] = Str::slug($data['first_name'] . '-' . Str::random(5));
+                    $data['name'] = Str::slug($data['first_name']);
                 } else if (isset($data['email'])) {
-                    $data['name'] = Str::slug(explode('@', $data['email'])[0] . '-' . Str::random(5));
+                    $data['name'] = Str::slug(explode('@', $data['email'])[0]);
                 } else {
                     $data['name'] = Str::slug(Str::random(10));
+                }
+
+                // check if username exists. if exists, append random str
+                $existingUsername = User::where('name', $data['name'])->first();
+                if($existingUsername) {
+                    $data['name'] = $data['name'] . '-' . Str::random(3);
                 }
             }
 

@@ -15,9 +15,13 @@
 - [x] Admin - reset system
 - [x] Admin Contact us messages 
 - [ ] Admin - profile
+- [ ] Admin - profile - logins
+- [ ] Admin - profile - update password
 - [ ] Admin - User mgmt
 - [x] User - dashboard
 - [ ] User - profile
+- [ ] User - profile - logins
+- [ ] User - profile - update password
 
 
 ## Tests coverage

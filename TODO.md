@@ -1,6 +1,8 @@
 # Todo List
 - [x] Homepage
 - [x] Footer
+- [x] Modals
+- [x] Toasts
 - [x] About us page
 - [x] Contact us page
 - [x] Login

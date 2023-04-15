@@ -1,7 +1,13 @@
 <script lang="ts">
     import { inertia, page, useForm } from '@inertiajs/svelte'
-    import { onMount } from 'svelte'
-    import { Icon, Input } from '.'
+    import { Icon, Input, ThemeSwitcher } from '.'
+    import { createEventDispatcher } from 'svelte'
+
+    const dispatch = createEventDispatcher()
+
+    function handleClick() {
+        dispatch('click')
+    }
 
     $: auth = $page.props.auth?.user
 
@@ -36,10 +42,6 @@
             icon: 'arrow-back',
         },
     ]
-
-    function drawerClose(): void {
-        // drawerStore.close()
-    }
 </script>
 
 <div class="">
@@ -66,7 +68,7 @@
                     class:bg-primary-active-token={item.route.endsWith($page.url)}
                     href={item.route}
                     use:inertia
-                    on:click={drawerClose}
+                    on:click={handleClick}
                 >
                     <Icon name={item.icon} classes="text-xl text-gray-600 dark:text-gray-400" />
                     {item.title}
@@ -76,6 +78,9 @@
     </ul>
     <br />
     <ul>
+        <li class="pl-4">
+            <ThemeSwitcher />
+        </li>
         <li>
             <a href=":;" class="nav-item" on:click|preventDefault={handleLogout}>
                 <Icon name="exit" classes="text-xl text-gray-600 dark:text-gray-400" />

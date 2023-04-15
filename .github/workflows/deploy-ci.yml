@@ -7,7 +7,7 @@
 # Make sure that your key algorithm of choice is supported. On Ubuntu 20.04 or later you must explicitly allow the use of the ssh-rsa algorithm. Add the following line to your OpenSSH daemon file (which is either /etc/ssh/sshd_config or a drop-in file under /etc/ssh/sshd_config.d/):
 # CASignatureAlgorithms +ssh-rsa
 
-name: Deploy Laravelte to Production
+name: Deploy Education-Materials to Production
 
 # Controls when the workflow will run
 on:

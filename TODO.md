@@ -14,12 +14,12 @@
 - [x] Admin - configurations
 - [x] Admin - reset system
 - [x] Admin Contact us messages 
-- [ ] Admin - profile
+- [x] Admin - profile
 - [ ] Admin - profile - logins
 - [ ] Admin - profile - update password
 - [ ] Admin - User mgmt
 - [x] User - dashboard
-- [ ] User - profile
+- [x] User - profile
 - [ ] User - profile - logins
 - [ ] User - profile - update password
 

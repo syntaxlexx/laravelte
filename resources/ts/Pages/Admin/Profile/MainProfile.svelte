@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Title from '@/Components/Title.svelte'
+    import AdminTitle from '../Components/AdminTitle.svelte'
 </script>
 
-<div class="mt-5">
-    <Title>Profile</Title>
+<div class="">
+    <AdminTitle />
 </div>

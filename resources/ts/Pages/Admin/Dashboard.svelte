@@ -3,8 +3,8 @@
     import { fly } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
-    import Title from '@/Components/Title.svelte'
     import ContactMessages from './Components/ContactMessages.svelte'
+    import AdminTitle from './Components/AdminTitle.svelte'
 
     let ready = false
     onMount(() => (ready = true))
@@ -14,7 +14,7 @@
     {#if ready}
         <div in:fly={{ y: -70, duration: 300, easing: quintOut }}>
             <br />
-            <Title>Admin Dashboard</Title>
+            <AdminTitle>Admin Dashboard</AdminTitle>
             <ContactMessages />
         </div>
     {/if}

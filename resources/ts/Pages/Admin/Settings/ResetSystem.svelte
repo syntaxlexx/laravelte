@@ -1,8 +1,8 @@
 <script lang="ts">
     import type { ResetSystemAction } from '@/types'
     import { useForm } from '@inertiajs/svelte'
-    import Title from '@/Components/Title.svelte'
     import { Button } from '@/Components'
+    import AdminTitle from '../Components/AdminTitle.svelte'
 
     export let actions: ResetSystemAction[]
 
@@ -17,8 +17,8 @@
     }
 </script>
 
-<div class="mt-5">
-    <Title>Reset System</Title>
+<div class="">
+    <AdminTitle />
     <br />
     <div class="card p-4">
         <div class="flex flex-wrap gap-4">

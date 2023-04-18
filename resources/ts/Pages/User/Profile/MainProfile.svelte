@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { Title } from '@/Components'
+    import UserTitle from '../Components/UserTitle.svelte'
 </script>
 
-<div class="mt-5">
-    <Title>Profile</Title>
+<div class="">
+    <UserTitle>Profile</UserTitle>
 </div>

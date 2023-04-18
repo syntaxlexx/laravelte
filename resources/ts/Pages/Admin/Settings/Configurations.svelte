@@ -5,6 +5,7 @@
     import type { SystemConfiguration } from '@/types'
     import ConfigurationModal from '../Components/ConfigurationModal.svelte'
     import { openModal } from 'svelte-modals'
+    import AdminTitle from '../Components/AdminTitle.svelte'
 
     export let configurations: SystemConfiguration[]
     let search: string | undefined
@@ -28,6 +29,8 @@
 </script>
 
 <div class="">
+    <AdminTitle />
+
     <SimpleTable {headers} hasFooter hasSearch on:search={handleSearch}>
         {#each filteredList as item, i}
             <tr>

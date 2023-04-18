@@ -164,3 +164,6 @@ table .actions {
     /* display: none; */
     width: 0px;
 }
+.dark ::-webkit-scrollbar-thumb {
+    background: #6e4695;
+}

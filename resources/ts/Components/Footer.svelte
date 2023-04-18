@@ -164,7 +164,7 @@
         <div class="mt-12 border-t border-warm-gray-700 pt-8">
             <p class="text-base text-warm-gray-400 xl:text-center">
                 &copy; {new Date().getFullYear()}
-                {$page.props.siteName}. All rights reserved.
+                {$page.props.siteName}. All rights reserved. Backed up by <a href="https://acelords.com">AceLords</a>
             </p>
         </div>
     </div>

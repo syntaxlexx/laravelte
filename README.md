@@ -1,7 +1,7 @@
 ![Laravelte Logo](public/img/laravelte-logo-full.png "text")
 
 <p align="center">
-<a href="https://github.com/lexxyungcarter/laravelte/actions"><img src="https://github.com/lexxyungcarter/laravelte/workflows/tests/badge.svg" alt="Build Status"></a>
+![workflow](https://github.com/SyntaxLexx/laravelte/actions/workflows/deploy-ci.yml/badge.svg)
 </p>
 
 ![Screenshot 1](public/img/laravelte-screenshot-1.jpg)

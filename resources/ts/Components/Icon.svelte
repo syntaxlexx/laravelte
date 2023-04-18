@@ -16,6 +16,10 @@
                 return 'bx bx-error-circle'
             case 'check':
                 return 'bx bx-check'
+            case 'star':
+                return 'bx bxs-star'
+            case 'star-empty':
+                return 'bx bx-star'
         }
 
         return `bx bx-${name}`

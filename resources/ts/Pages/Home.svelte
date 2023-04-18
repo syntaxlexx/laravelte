@@ -4,12 +4,10 @@
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
     import Hero from '@/Components/Hero.svelte'
+    import PremiumAccess from '@/Components/PremiumAccess.svelte'
 
     let ready = false
     onMount(() => (ready = true))
-
-    export let laravelVersion: string
-    export let phpVersion: string
 </script>
 
 <svelte:head>
@@ -19,49 +17,7 @@
 <div class="mt-16" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
     <Hero />
 
-    <section aria-labelledby="offices-heading">
-        <div class="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-            <h2 id="offices-heading" class="text-3xl font-extrabold text-warm-gray-900">Our offices</h2>
-            <p class="mt-6 text-lg text-warm-gray-500 max-w-3xl">
-                This version runs on Laravel v{laravelVersion} paired with PHP v{phpVersion}
-            </p>
-            <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
-                <div>
-                    <h3 class="text-lg font-medium text-warm-gray-900">Los Angeles</h3>
-                    <p class="mt-2 text-base text-warm-gray-500">
-                        <span class="block">4556 Brendan Ferry</span>
+    <br />
 
-                        <span class="block">Los Angeles, CA 90210</span>
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-medium text-warm-gray-900">New York</h3>
-                    <p class="mt-2 text-base text-warm-gray-500">
-                        <span class="block">886 Walter Streets</span>
-
-                        <span class="block">New York, NY 12345</span>
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-medium text-warm-gray-900">Toronto</h3>
-                    <p class="mt-2 text-base text-warm-gray-500">
-                        <span class="block">7363 Cynthia Pass</span>
-
-                        <span class="block">Toronto, ON N3Y 4H8</span>
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-medium text-warm-gray-900">London</h3>
-                    <p class="mt-2 text-base text-warm-gray-500">
-                        <span class="block">114 Cobble Lane</span>
-
-                        <span class="block">London N1 2EF</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <PremiumAccess />
 </div>

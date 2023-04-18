@@ -152,7 +152,7 @@
                             </li>
                         {:else}
                             <li>
-                                <a href="/login" class="nav-item">Login</a>
+                                <a href="/login" use:inertia class="nav-item">Login</a>
                             </li>
                         {/if}
                     </ul>

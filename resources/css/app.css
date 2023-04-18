@@ -167,3 +167,11 @@ table .actions {
 .dark ::-webkit-scrollbar-thumb {
     background: #6e4695;
 }
+
+.seva-fields.formkit-fields .formkit-field {
+    flex:2 !important;
+    margin-right:20px !important;
+}
+.seva-fields.formkit-fields .formkit-submit {
+    flex: 1 !important;
+}

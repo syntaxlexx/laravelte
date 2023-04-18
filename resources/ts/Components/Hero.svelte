@@ -1,6 +1,7 @@
 <script>
     import { page } from '@inertiajs/svelte'
     import { FancyButton, Icon } from '.'
+    import SubscribeForm from './SubscribeForm.svelte'
 </script>
 
 <div class="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
@@ -18,7 +19,7 @@
                             What's new
                         </span>
                         <span class="inline-flex items-center text-sm font-medium text-primary-500 space-x-1">
-                            <span>Just shipped version 0.1.0</span>
+                            <span>Just shipped version {$page.props.systemVersion}</span>
                             <!-- Heroicon name: solid/chevron-right -->
                             <svg
                                 class="h-5 w-5"
@@ -38,102 +39,32 @@
                 </div>
                 <div class="mt-6 sm:max-w-xl">
                     <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
-                        Issue management for growing teams
+                        Laravel Webpp for Quality Applications
                     </h1>
                     <p class="mt-6 text-xl text-gray-500">
-                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+                        We decided to open-source parts of our cash-cow projects, to showcase one way of how a sample
+                        small-to-medium sized project is built.
                     </p>
                 </div>
-                <form action="#" class="mt-12 sm:max-w-lg sm:w-full sm:flex">
-                    <div class="min-w-0 flex-1">
-                        <label for="hero-email" class="sr-only">Email address</label>
-                        <input
-                            id="hero-email"
-                            type="email"
-                            class="block w-full border border-primary-300 rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-tertiary-500 focus:ring-tertiary-500"
-                            placeholder="Enter your email"
-                        />
-                    </div>
-                    <div class="mt-4 sm:mt-0 sm:ml-3">
-                        <button
-                            type="submit"
-                            class="block w-full rounded-md border border-transparent px-5 py-3 bg-tertiary-600 text-base font-medium text-white shadow hover:bg-tertiary-600 focus:outline-none focus:ring-2 focus:ring-tertiary-500 focus:ring-offset-2 sm:px-10"
-                            >Notify me</button
-                        >
-                    </div>
-                </form>
+                <div class="mt-5">
+                    <p class="text-xs mb-3">Subsribe to get the latest updates</p>
+                    <SubscribeForm />
+                </div>
                 <div class="mt-6">
                     <div class="inline-flex items-center divide-x divide-primary-300">
                         <div class="flex-shrink-0 flex pr-5">
-                            <!-- Heroicon name: solid/star -->
-                            <svg
-                                class="h-5 w-5 text-yellow-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
-                            <!-- Heroicon name: solid/star -->
-                            <svg
-                                class="h-5 w-5 text-yellow-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
-                            <!-- Heroicon name: solid/star -->
-                            <svg
-                                class="h-5 w-5 text-yellow-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
-                            <!-- Heroicon name: solid/star -->
-                            <svg
-                                class="h-5 w-5 text-yellow-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
-                            <!-- Heroicon name: solid/star -->
-                            <svg
-                                class="h-5 w-5 text-yellow-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
+                            {#each Array(5).fill(5) as i}
+                                <Icon name="star" classes="text-yellow-400" />
+                            {/each}
                         </div>
                         <div class="min-w-0 flex-1 pl-5 py-1 text-sm text-gray-500 sm:py-3">
                             <span class="font-medium text-gray-900">Rated 5 stars</span> by over
-                            <span class="font-medium text-tertiary-500">500 beta users</span>
+                            <span class="font-medium text-tertiary-500">20 beta users</span>
                         </div>
                     </div>
                 </div>
                 <br />
-                <div class="lg:float-right lg:pr-10">
+                <div class="w-full flex lg:justify-end lg:pr-10">
                     <a href="https://github.com/SyntaxLexx/laravelte" class="no-underline" target="_blank">
                         <FancyButton size="lg">
                             View on Github
@@ -141,6 +72,12 @@
                         </FancyButton>
                     </a>
                 </div>
+                <p class="mt-12 text-xl text-gray-500">
+                    This version is currently running on <span class="font-bold"
+                        >Laravel v{$page.props.laravelVersion}</span
+                    >
+                    paired with <span class="font-bold">PHP v{$page.props.phpVersion}</span>
+                </p>
             </div>
         </div>
     </div>
@@ -149,7 +86,7 @@
         <div class="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <div class="hidden sm:block">
                 <div
-                    class="absolute inset-y-0 left-1/2 w-screen bg-gray-50 rounded-l-3xl lg:left-80 lg:right-0 lg:w-full"
+                    class="absolute inset-y-0 left-1/2 w-screen bg-primary-100 dark:bg-primary-800 rounded-l-3xl lg:left-80 lg:right-0 lg:w-full"
                 />
                 <svg
                     class="absolute top-8 right-1/2 -mr-3 lg:m-0 lg:left-0"
@@ -167,7 +104,14 @@
                             height="20"
                             patternUnits="userSpaceOnUse"
                         >
-                            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                            <rect
+                                x="0"
+                                y="0"
+                                width="4"
+                                height="4"
+                                class="text-primary-400 dark:text-primary-500"
+                                fill="currentColor"
+                            />
                         </pattern>
                     </defs>
                     <rect width="404" height="392" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)" />
@@ -176,8 +120,8 @@
             <div class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
                 <img
                     class="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
-                    src="https://tailwindui.com/img/component-images/task-app-rose.jpg"
-                    alt="img"
+                    src="/img/laravelte-dashboard.jpg"
+                    alt="dashboard"
                 />
             </div>
         </div>

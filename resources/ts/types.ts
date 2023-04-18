@@ -40,3 +40,18 @@ export type ContactMessage = {
     last_read_at?: Date,
     last_read_at_w3c?: Date,
 }
+
+
+export type Testimonial = {
+    id: number,
+    user_id?: number,
+    names: string,
+    position?: string,
+    company?: string,
+    country?: string,
+    content: string,
+    is_approved: boolean,
+    created_at: Date,
+    updated_at?: Date,
+}
+

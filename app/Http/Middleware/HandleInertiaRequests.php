@@ -49,6 +49,7 @@ class HandleInertiaRequests extends Middleware
             },
             'siteLogo' => config('app.logo'),
             'siteName' => config('app.name'),
+            'systemVersion' => config('system.version'),
             'locale' => Session::get('locale') ?? App::getLocale(),
         ]);
 

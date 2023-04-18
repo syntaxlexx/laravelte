@@ -37,7 +37,7 @@
             <div class="flex-1 flex flex-col min-h-0">
                 <div class="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
                     <!-- <img class="h-8 w-auto" src={$page.props.siteLogo} alt={$page.props.siteName} /> -->
-                    <h3 class="text-2xl text-white font-semibold">{$page.props.siteName}</h3>
+                    <h3 class="text-2xl text-white font-semibold">{$page.props.siteName} - Admin</h3>
                 </div>
                 <div class="flex-1 flex flex-col overflow-y-auto bg-gray-800 dark:border-r dark:border-gray-700">
                     <AdminSidebar on:click={closeDrawer} />

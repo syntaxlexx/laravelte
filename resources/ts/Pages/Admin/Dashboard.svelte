@@ -5,6 +5,7 @@
     import { onMount } from 'svelte'
     import ContactMessages from './Components/ContactMessages.svelte'
     import AdminTitle from './Components/AdminTitle.svelte'
+    import AdminStats from './Components/AdminStats.svelte'
 
     let ready = false
     onMount(() => (ready = true))
@@ -13,8 +14,9 @@
 <div class="">
     {#if ready}
         <div in:fly={{ y: -70, duration: 300, easing: quintOut }}>
-            <br />
             <AdminTitle>Admin Dashboard</AdminTitle>
+            <AdminStats />
+            <br />
             <ContactMessages />
         </div>
     {/if}

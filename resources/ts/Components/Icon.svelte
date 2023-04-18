@@ -20,6 +20,10 @@
                 return 'bx bxs-star'
             case 'star-empty':
                 return 'bx bx-star'
+            case 'arrow-up':
+                return 'bx bx-up-arrow-alt'
+            case 'arrow-down':
+                return 'bx bx-down-arrow-alt'
         }
 
         return `bx bx-${name}`

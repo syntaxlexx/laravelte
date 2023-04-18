@@ -49,8 +49,8 @@
     }
 </script>
 
-<h4 class="mb-4">Contact Messages</h4>
-<div class="card p-4">
+<h3 class="text-lg leading-6 mb-3 font-medium text-gray-900 dark:text-gray-100">Contact Messages</h3>
+<div class="">
     {#if messages.length > 0}
         <SimpleTable {headers} hasFooter>
             {#each messages as item}

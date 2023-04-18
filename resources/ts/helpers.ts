@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2';
 import dayjs from 'dayjs';
+import numeral from 'numeral'
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin\CMS;
+namespace App\Actions\Admin\Cms;
 
 use App\Models\ContactMessage;
 use App\Traits\CustomControllerResponsesTrait;

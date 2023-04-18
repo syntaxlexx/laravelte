@@ -1,7 +1,7 @@
 <?php
 
 use App\Actions\Admin\Cms\ContactMessages;
-use App\Actions\Admin\CMS\ContactMessagesDelete;
+use App\Actions\Admin\Cms\ContactMessagesDelete;
 use App\Actions\Admin\Dashboard;
 use App\Actions\Admin\Profile\MainProfile;
 use App\Actions\Admin\Settings\Configurations;

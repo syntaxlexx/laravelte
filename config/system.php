@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-$appVersion = '0.0.2';
+$appVersion = '1.0.0';
 
 return [
     // App Version

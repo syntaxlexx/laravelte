@@ -75,7 +75,7 @@
                 <li>Users - Manage messages</li>
                 <li>Users - Manage notifications</li>
             </ul>
-            <a href="#" use:inertia class="mt-6 inline-block w-full sm:w-auto">
+            <a href="https://syntaxlexx.gumroad.com/l/xfqol" use:inertia class="mt-6 inline-block w-full sm:w-auto">
                 <img src="/img/gumroad-button.jpg" alt="purchase on gumroad" />
             </a>
         </div>

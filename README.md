@@ -4,6 +4,13 @@
 
 [![Buy Premium Version on Gumroad](public/img/gumroad-button.jpg)](https://syntaxlexx.gumroad.com/l/xfqol)
 
+> The premium version contains a lot more code, tests, and 'swagger' than the open-source version. 
+
+
+
+[Click here to view the Premium Version Online Demo](https://laravelte.acelords.com)
+
+
 ![Screenshot 1](public/img/laravelte-screenshot-1.jpg)
 ![Screenshot 2](public/img/laravelte-screenshot-2.jpg)
 ![Screenshot 3](public/img/laravelte-screenshot-3.jpg)

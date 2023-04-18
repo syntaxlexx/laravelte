@@ -1,8 +1,8 @@
 ![Laravelte Logo](public/img/laravelte-logo-full.png "text")
 
-<p align="center">
 ![workflow](https://github.com/SyntaxLexx/laravelte/actions/workflows/deploy-ci.yml/badge.svg)
-</p>
+
+[![Buy Premium Version on Gumroad](public/img/gumroad-button.jpg)](https://syntaxlexx.gumroad.com/l/xfqol)
 
 ![Screenshot 1](public/img/laravelte-screenshot-1.jpg)
 ![Screenshot 2](public/img/laravelte-screenshot-2.jpg)

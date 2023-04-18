@@ -126,6 +126,7 @@
                             <li>
                                 <a
                                     href={item.route}
+                                    use:inertia
                                     class="nav-item"
                                     aria-current="page"
                                     on:click={() => (isNavCollapsed = true)}>{item.title}</a

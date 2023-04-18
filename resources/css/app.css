@@ -36,9 +36,7 @@ body, p, h1, h2, h3 {
 .checkbox {
     @apply ml-2 text-sm font-medium text-gray-900 dark:text-gray-300
 }
-.scrollbar-hidden::-webkit-scrollbar {
-    display: none;
-}
+
 
 figcaption {
     @apply text-sm italic mt-1;
@@ -144,4 +142,25 @@ table .actions {
 }
 .modal-footer {
 	@apply mt-3 p-6 space-y-6 border-t border-gray-600 flex justify-end items-baseline gap-3;
+}
+
+
+/* =========== scrollbar ================= */
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #e3c7fc;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #b874f8;
+    border-radius: 10px;
+}
+.scrollbar-hidden::-webkit-scrollbar {
+    /* display: none; */
+    width: 0px;
 }

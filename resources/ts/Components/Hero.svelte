@@ -1,5 +1,6 @@
 <script>
     import { page } from '@inertiajs/svelte'
+    import { FancyButton, Icon } from '.'
 </script>
 
 <div class="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
@@ -131,6 +132,15 @@
                         </div>
                     </div>
                 </div>
+                <br />
+                <div class="lg:float-right lg:pr-10">
+                    <a href="https://github.com/SyntaxLexx/laravelte" class="no-underline" target="_blank">
+                        <FancyButton size="lg">
+                            View on Github
+                            <Icon name="link-external" />
+                        </FancyButton>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -167,7 +177,7 @@
                 <img
                     class="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                     src="https://tailwindui.com/img/component-images/task-app-rose.jpg"
-                    alt=""
+                    alt="img"
                 />
             </div>
         </div>

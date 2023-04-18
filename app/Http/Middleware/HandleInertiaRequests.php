@@ -47,7 +47,7 @@ class HandleInertiaRequests extends Middleware
                     'error' => $request->session()->get('error'),
                 ];
             },
-            'siteLogo' => '/img/laravelte-logo.png',
+            'siteLogo' => config('app.logo'),
             'siteName' => config('app.name'),
             'locale' => Session::get('locale') ?? App::getLocale(),
         ]);

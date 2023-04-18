@@ -7,11 +7,7 @@
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8 xl:col-span-1">
-                <img
-                    class="h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=warmGray&shade=400"
-                    alt="Company name"
-                />
+                <img class="h-10" src={$page.props.siteLogo} alt={$page.props.siteName} />
                 <p class="text-warm-gray-400 text-base">
                     Making the world a better place through constructing elegant hierarchies.
                 </p>

@@ -28,7 +28,7 @@
 
         @inertiaHead
     </head>
-    <body class="font-sans antialiased" data-theme="sahara">
+    <body class="font-sans antialiased h-full">
         @inertia
     </body>
 </html>

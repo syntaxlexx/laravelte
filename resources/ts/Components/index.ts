@@ -2,6 +2,7 @@ import Button from './Button.svelte';
 import Circle from './Circle.svelte';
 import Divider from './Divider.svelte';
 import DisplayErrors from './DisplayErrors.svelte'
+import FancyButton from './FancyButton.svelte'
 import Icon from './Icon.svelte';
 import Input from './Input.svelte';
 import Loading from './Loading.svelte';
@@ -18,6 +19,7 @@ export {
     Circle,
     DisplayErrors,
     Divider,
+    FancyButton,
     Icon,
     Input,
     Loading,

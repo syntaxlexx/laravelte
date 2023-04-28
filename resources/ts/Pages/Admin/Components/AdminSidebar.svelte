@@ -2,6 +2,7 @@
     import { Icon, ThemeSwitcher } from '@/Components'
     import { inertia, page, useForm } from '@inertiajs/svelte'
     import { createEventDispatcher } from 'svelte'
+    import type { User } from '@/types'
 
     const dispatch = createEventDispatcher()
 
@@ -9,11 +10,11 @@
         dispatch('click')
     }
 
-    $: auth = $page.props.auth?.user
+    $: auth = $page.props.auth?.user as User
 
     let form = useForm()
 
-    function handleLogout(e) {
+    function handleLogout(e: MouseEvent) {
         e.preventDefault()
 
         $form.post(route('logout'))

@@ -4,6 +4,7 @@
     import { fly } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
+    import Sweet from '@/Components/Sweet.svelte'
 
     let ready = false
     onMount(() => (ready = true))
@@ -97,4 +98,6 @@
             </p>
         </div>
     </div>
+
+    <Sweet />
 </div>

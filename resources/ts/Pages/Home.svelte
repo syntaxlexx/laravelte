@@ -5,6 +5,7 @@
     import { onMount } from 'svelte'
     import Hero from '@/Components/Hero.svelte'
     import PremiumAccess from '@/Components/PremiumAccess.svelte'
+    import Sweet from '@/Components/Sweet.svelte'
 
     let ready = false
     onMount(() => (ready = true))
@@ -20,4 +21,5 @@
     <br />
 
     <PremiumAccess />
+    <Sweet />
 </div>

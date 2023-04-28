@@ -2,19 +2,12 @@
 
 namespace App\Actions\Auth;
 
-use App\Events\CRUDErrorOccurred;
-use App\Events\UserWasRegistered;
-use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Traits\CustomControllerResponsesTrait;
 use App\Traits\ThemesTrait;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class Register
@@ -30,8 +23,28 @@ class Register
      */
     protected $usersRepo;
 
-    public function asController(RegisterRequest $request, UserRepository $usersRepo)
+    public function asController(Request $request, UserRepository $usersRepo)
     {
+        if($request->isMethod('get')) {
+            $params = [
+                'canRegister' => setting('allow_user_registrations'),
+                'oauth_providers' => config('system.providers') ?? []
+            ];
+
+            return $this->generatePage('login', 'Auth/Register', $params);
+        }
+
+        $request->validate([
+            'name' => 'nullable|string|max:255|unique:users,name',
+            'email' => 'required|email|string|min:1|max:255|unique:users,email',
+            'phone' => 'nullable|string|max:255|min:10|unique:users,phone|starts_with:+',
+            'password' => 'required|string|confirmed|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'location' => 'nullable|string|max:255|min:1',
+            'date_of_birth' => 'nullable|date|before:today',
+        ]);
+
         if (!setting('allow_user_registrations')) {
             return $this->respError(trans('auth.registration_closed'));
         }

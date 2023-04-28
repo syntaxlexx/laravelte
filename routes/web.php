@@ -1,12 +1,5 @@
 <?php
 
-use App\Actions\Auth\Login;
-use App\Actions\Auth\Logout;
-use App\Actions\Auth\Pages\ForgotPassword;
-use App\Actions\Auth\Pages\Login as LoginPage;
-use App\Actions\Auth\Pages\Register as RegisterPage;
-use App\Actions\Auth\Pages\ResetPassword;
-use App\Actions\Auth\Register;
 use App\Actions\Frontend\About;
 use App\Actions\Frontend\Contact;
 use App\Actions\Frontend\Home;
@@ -31,16 +24,8 @@ Route::get('/contact', Contact::class)->name('contact');
 Route::post('/contact', Contact::class)->middleware('throttle:' . config('auth.limiters.contact'))->name('contact.store');
 Route::get('/policy-pages/{slug?}', PolicyPages::class)->name('policy-pages');
 
-
-// Auth routes - only for the web
-// ----------------------------------
-Route::get('/login', LoginPage::class)->middleware(['guest'])->name('login');
-Route::post('/login', Login::class)->middleware(['guest', 'throttle:' . config('auth.limiters.login')])->name('login');
-Route::get('/register', RegisterPage::class)->middleware(['guest'])->name('register');
-Route::post('/register', Register::class)->middleware(['guest', 'throttle:' . config('auth.limiters.registration')])->name('register');
-Route::post('/logout', Logout::class)->middleware('auth:sanctum')->name('logout');
-Route::get('/forgot-password', ForgotPassword::class)->middleware('guest')->name('forgot-password');
-Route::get('/reset-password/{token}', ResetPassword::class)->middleware('guest')->name('password.reset');
+// auth
+include 'modules/auth.php';
 
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);

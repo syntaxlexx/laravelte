@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Mail\MagicLoginLink;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
+use Str;
 
 class User extends Authenticatable
 {
@@ -30,11 +33,11 @@ class User extends Authenticatable
     | provide a harmonized way of accessing system statuses
     |
     */
-    CONST STATUS_ACTIVE = 'ACTIVE';
-    CONST STATUS_BANNED = 'BANNED';
-    CONST STATUS_FLAGGED = 'FLAGGED';
-    CONST STATUS_UNDER_REVIEW = 'UNDER_REVIEW';
-    CONST STATUSES = [
+    const STATUS_ACTIVE = 'ACTIVE';
+    const STATUS_BANNED = 'BANNED';
+    const STATUS_FLAGGED = 'FLAGGED';
+    const STATUS_UNDER_REVIEW = 'UNDER_REVIEW';
+    const STATUSES = [
         self::STATUS_ACTIVE,
         self::STATUS_BANNED,
         self::STATUS_FLAGGED,
@@ -49,16 +52,16 @@ class User extends Authenticatable
     | provide a harmonized way of accessing system roles
     |
     */
-    CONST ROLE_SUPERADMIN = 'SUPERADMIN';
-    CONST ROLE_DEVELOPER = 'DEVELOPER';
-    CONST ROLE_ADMIN = 'ADMIN';
-    CONST ROLE_USER = 'USER';
+    const ROLE_SUPERADMIN = 'SUPERADMIN';
+    const ROLE_DEVELOPER = 'DEVELOPER';
+    const ROLE_ADMIN = 'ADMIN';
+    const ROLE_USER = 'USER';
     const ROLE_HUMANS = [
         self::ROLE_ADMIN,
         self::ROLE_USER,
     ];
-    CONST ROLE_DEFAULT = self::ROLE_USER;
-    CONST ROLES = [
+    const ROLE_DEFAULT = self::ROLE_USER;
+    const ROLES = [
         self::ROLE_SUPERADMIN,
         self::ROLE_DEVELOPER,
         self::ROLE_ADMIN,
@@ -149,7 +152,7 @@ class User extends Authenticatable
      */
     public function hasRole($roles)
     {
-        if(! is_array($roles))
+        if (!is_array($roles))
             $roles = [$roles];
 
         return in_array($this->role, $roles);
@@ -158,17 +161,17 @@ class User extends Authenticatable
     /**
      * check if a user can login into the system
      */
-    public function canLogin() : bool
+    public function canLogin(): bool
     {
         $canLogin = true;
 
-        if(! in_array($this->status, [
+        if (!in_array($this->status, [
             self::STATUS_ACTIVE,
             self::STATUS_FLAGGED,
             self::STATUS_UNDER_REVIEW,
         ])) {
             // only superadmins and developers can login - not even the admin
-            if(! in_array($this->role, [self::ROLE_SUPERADMIN, self::ROLE_DEVELOPER])) {
+            if (!in_array($this->role, [self::ROLE_SUPERADMIN, self::ROLE_DEVELOPER])) {
                 $canLogin = false;
             }
         }
@@ -176,4 +179,14 @@ class User extends Authenticatable
         return $canLogin;
     }
 
+    public function sendLoginLink()
+    {
+        $plaintext = Str::random(32);
+        $token = $this->loginTokens()->create([
+            'token' => md5($plaintext),
+            'expires_at' => now()->addMinutes(15),
+        ]);
+
+        Mail::to($this->email)->queue(new MagicLoginLink($plaintext, $token->expires_at));
+    }
 }

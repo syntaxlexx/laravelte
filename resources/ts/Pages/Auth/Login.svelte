@@ -1,9 +1,11 @@
 <script lang="ts">
-    import { useForm } from '@inertiajs/svelte'
+    import { useForm, router } from '@inertiajs/svelte'
     import { fly } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
-    import { Button, Icon, Input, Loading, Title } from '@/Components'
+    import { Alert, Button, DisplayErrors, Icon, Input, Title } from '@/Components'
+    import { toasts } from 'svelte-toasts'
+    import { isEmail } from '@/helpers'
 
     let ready = false
     onMount(() => (ready = true))
@@ -33,12 +35,24 @@
             },
         })
     }
+
+    function sendLoginLink() {
+        if (!isEmail($form.username)) {
+            toasts.info('Please provide a valid email')
+            return
+        }
+
+        router.post(route('login-via-magic-link'), {
+            email: $form.username,
+        })
+    }
 </script>
 
 <div class="container page-padding">
     {#if ready}
         <div class="mx-auto max-w-lg" in:fly={{ y: -70, duration: 300, easing: quintOut }}>
             <Title>Login</Title>
+
             <p class="text-center">Fill in the form below</p>
             <br />
             {#if is_demo}
@@ -68,7 +82,7 @@
                     bind:value={$form.username}
                 />
 
-                <Button color="ghost" block>
+                <Button color="ghost" type="button" block on:click={sendLoginLink}>
                     <Icon name="bx bxs-magic-wand" size="lg" />
                     Send Magic Login Link</Button
                 >
@@ -101,6 +115,8 @@
                     <input class="checkbox" type="checkbox" bind:checked={$form.remember} />
                     <p>Remember Me</p>
                 </label> -->
+
+                <DisplayErrors errors={$form.errors} />
 
                 <Button type="submit" text="Login" block disabled={$form.processing} loading={$form.processing} />
             </form>

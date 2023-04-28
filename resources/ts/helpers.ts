@@ -164,12 +164,38 @@ export const stripTags = (htmlString: string) => {
  * @param errors array,object,string
  * @param code number default=422
  */
-export const getValidationErrorMessages = (errors: Error | string | string[]): string[] => {
+export const getValidationErrorMessages = (errors: Error | string | string[]): string[] | null => {
     if (Array.isArray(errors)) {
         const arr: string[] = []
         errors.forEach(e => arr.push(snakeCaseToSentenceCaseCapitalizeWords(e)))
         return arr;
     }
 
+    if (typeof errors === 'object') {
+        if (Object.keys(errors).length < 1) {
+            return null;
+        }
+
+        return Object.values(errors)
+    }
+
     return [errors.toString()]
+}
+
+/**
+ * verifie si la chaine renseigné est un email
+ * check if email is valide
+ * @param string emailAdress
+ * @return bool
+ */
+export function isEmail(emailAdress: string | null | undefined): boolean {
+    if (!emailAdress) return false;
+
+    let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (emailAdress.match(regex))
+        return true;
+
+    else
+        return false;
 }

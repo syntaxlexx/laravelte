@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Actions\Admin\CMS;
-
-/**
- */
-class ContactMessagesDelete
-{
-}
 namespace App\Actions\Admin\Cms;
 
 /**
  */
 class ContactMessages
+{
+}
+/**
+ */
+class ContactMessagesDelete
 {
 }
 namespace App\Actions\Admin;
@@ -57,26 +55,19 @@ class Logout
 class Register
 {
 }
-namespace App\Actions\Auth\Pages;
-
 /**
  */
-class ForgotPassword
-{
-}
-/**
- */
-class Login
-{
-}
-/**
- */
-class Register
+class RequestPasswordReset
 {
 }
 /**
  */
 class ResetPassword
+{
+}
+/**
+ */
+class VerifyLogin
 {
 }
 namespace App\Actions\Frontend;

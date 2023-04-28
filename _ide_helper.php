@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.7.1.
+ * Generated for Laravel 10.9.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -9751,8 +9751,8 @@
                     /**
          * Start defining a series of piped processes.
          *
-         * @param callable $callback
-         * @return \Illuminate\Process\Pipe 
+         * @param callable|array $callback
+         * @return \Illuminate\Contracts\Process\ProcessResult 
          * @static 
          */ 
         public static function pipe($callback, $output = null)
@@ -18204,7 +18204,7 @@
      * 
      *
      * @template TKey of array-key
-     * @template TValue
+     * @template-covariant TValue
      * @implements \ArrayAccess<TKey, TValue>
      * @implements \Illuminate\Support\Enumerable<TKey, TValue>
      */ 
@@ -19247,7 +19247,7 @@
                     /**
          * 
          *
-         * @param \Spatie\FlareClient\FlareMiddleware\FlareMiddleware|array<FlareMiddleware>|\Spatie\FlareClient\class-string<FlareMiddleware> $middleware
+         * @param \Spatie\FlareClient\FlareMiddleware\FlareMiddleware|array<FlareMiddleware>|\Spatie\FlareClient\class-string<FlareMiddleware>|callable $middleware
          * @return \Spatie\FlareClient\Flare 
          * @static 
          */ 
@@ -21028,7 +21028,7 @@ namespace  {
              * Add a morph-to relationship condition to the query.
              *
              * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
-             * @param \Illuminate\Database\Eloquent\Model|string $model
+             * @param \Illuminate\Database\Eloquent\Model|string|null $model
              * @return \Illuminate\Database\Eloquent\Builder|static 
              * @static 
              */ 
@@ -21056,7 +21056,7 @@ namespace  {
              * Add a morph-to relationship condition to the query with an "or where" clause.
              *
              * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
-             * @param \Illuminate\Database\Eloquent\Model|string $model
+             * @param \Illuminate\Database\Eloquent\Model|string|null $model
              * @return \Illuminate\Database\Eloquent\Builder|static 
              * @static 
              */ 

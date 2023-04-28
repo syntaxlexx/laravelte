@@ -85,8 +85,6 @@ class Login
             'device_name' => $deviceName,
         ], $user));
 
-        $deviceName = $request->device_name ?? $user->name . ' device';
-
         if($request->wantsJson())
         {
             // specifically target mobile devices - LARAVEL SANCTUM

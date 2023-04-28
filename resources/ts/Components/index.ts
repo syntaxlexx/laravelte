@@ -1,3 +1,4 @@
+import Alert from './Alert.svelte';
 import Button from './Button.svelte';
 import Circle from './Circle.svelte';
 import Divider from './Divider.svelte';
@@ -15,6 +16,7 @@ import ThemeSwitcher from './ThemeSwitcher.svelte'
 import Title from './Title.svelte';
 
 export {
+    Alert,
     Button,
     Circle,
     DisplayErrors,

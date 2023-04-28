@@ -3,7 +3,7 @@
     import { fly } from 'svelte/transition'
     import { quintOut } from 'svelte/easing'
     import { onMount } from 'svelte'
-    import { Button, Input, Loading, Title } from '@/Components'
+    import { Button, Icon, Input, Loading, Title } from '@/Components'
 
     let ready = false
     onMount(() => (ready = true))
@@ -68,38 +68,41 @@
                     bind:value={$form.username}
                 />
 
-                <div class="my-3 relative">
-                    {#if showPassword}
-                        <Input
-                            name="username"
-                            hasError={$form.errors.username}
-                            type="text"
-                            placeholder="Password"
-                            bind:value={$form.password}
-                        />
-                    {:else}
-                        <Input
-                            name="username"
-                            hasError={$form.errors.username}
-                            type="password"
-                            placeholder="Password"
-                            bind:value={$form.password}
-                        />
-                    {/if}
+                <Button color="ghost" block>
+                    <Icon name="bx bxs-magic-wand" size="lg" />
+                    Send Magic Login Link</Button
+                >
 
-                    <div class="absolute right-5 top-2">
-                        <button class="no-style" type="button" on:click={() => (showPassword = !showPassword)}>
-                            <i class="bx bx-lock text-lg" />
-                        </button>
-                    </div>
-                </div>
+                <p class="text-lg my-5 text-center">--OR--</p>
+
+                {#if showPassword}
+                    <Input
+                        name="username"
+                        hasError={$form.errors.username}
+                        type="text"
+                        placeholder="Password"
+                        bind:value={$form.password}
+                        suffixIcon="lock"
+                        on:suffix={() => (showPassword = !showPassword)}
+                    />
+                {:else}
+                    <Input
+                        name="username"
+                        hasError={$form.errors.username}
+                        type="password"
+                        placeholder="Password"
+                        bind:value={$form.password}
+                        suffixIcon="lock-open-alt"
+                        on:suffix={() => (showPassword = !showPassword)}
+                    />
+                {/if}
 
                 <!-- <label class="flex items-center space-x-2  my-3 ml-1">
                     <input class="checkbox" type="checkbox" bind:checked={$form.remember} />
                     <p>Remember Me</p>
                 </label> -->
 
-                <Button type="submit" block disabled={$form.processing} loading={$form.processing}>Submit</Button>
+                <Button type="submit" text="Login" block disabled={$form.processing} loading={$form.processing} />
             </form>
 
             {#if canResetPassword}

@@ -1,27 +1,47 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte'
-    import { Loading } from '.'
+    import { Icon, Loading } from '.'
     import { slide } from 'svelte/transition'
     import { quadOut } from 'svelte/easing'
-    const dispatch = createEventDispatcher()
+    import { router } from '@inertiajs/svelte'
+
+    const dispatch = createEventDispatcher<{ click: void }>()
 
     type ButtonSize = 'normal' | 'sm' | 'lg'
-    type ButtonColor = 'primary' | 'secondary' | 'tertiary' | 'ghost'
+    type ButtonColor = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'ghost' | 'light'
 
     export let size: ButtonSize = 'normal'
     export let color: ButtonColor = 'primary'
     export let block: string | boolean | undefined = undefined
     export let loading: boolean = false
+    export let icon: string | undefined = undefined
+    export let text: string | undefined = 'Click me'
+
+    export let route: string | undefined = undefined
+
+    function handleClick() {
+        if (route !== undefined) {
+            router.visit(route)
+            return
+        }
+        dispatch('click')
+    }
 </script>
 
 <button
-    class={`py-2 lg:py-3 px-4 lg:px-5 mx-1 flex gap-4 justify-center items-center text-sm lg:text-md ${color} btn-${size} ${
+    class={`py-2 lg:py-3 px-4 lg:px-5 mx-1 flex gap-2 justify-center items-center text-sm lg:text-md ${color} btn-${size} ${
         block !== undefined ? 'w-full' : ''
     }`}
     {...$$restProps}
-    on:click={() => dispatch('click')}
+    on:click={handleClick}
 >
-    <slot />
+    {#if icon}
+        <Icon name={icon} size="lg" />
+    {/if}
+
+    <slot>
+        {text}
+    </slot>
 
     {#if loading}
         <div transition:slide={{ axis: 'x', duration: 300, easing: quadOut }}>
@@ -54,10 +74,19 @@
     button.tertiary {
         @apply bg-gradient-to-r from-tertiary-500 via-tertiary-600 to-tertiary-700 hover:opacity-70;
     }
+    button.danger {
+        @apply border border-red-500 dark:border-red-500 shadow-sm font-medium rounded-md text-white dark:text-red-100 bg-red-500 dark:bg-red-800 hover:bg-red-900 dark:hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500;
+    }
     button.ghost {
-        @apply border border-primary-700 dark:border-primary-300 text-primary-800 dark:text-primary-200;
+        @apply border border-primary-700 dark:border-primary-300 text-primary-800 dark:text-primary-200 hover:bg-primary-100 dark:hover:bg-primary-700;
+    }
+    button.light {
+        @apply border border-gray-300 dark:border-gray-600 shadow-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
     }
     button.btn-sm {
         @apply py-1 lg:py-2 px-2 lg:px-3;
+    }
+    button.btn-lg {
+        @apply py-2.5 lg:py-3 px-3 lg:px-5;
     }
 </style>

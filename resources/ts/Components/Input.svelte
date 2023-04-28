@@ -1,5 +1,13 @@
 <script lang="ts">
     import { Icon } from '.'
+    import { createEventDispatcher } from 'svelte'
+
+    enum Events {
+        prefix,
+        suffix,
+    }
+    const dispatch = createEventDispatcher<{ [key in keyof typeof Events]: undefined }>()
+    const dispatchKeydown = createEventDispatcher<{ keydown: KeyboardEvent }>()
 
     type InputColor = 'primary' | 'default'
 
@@ -13,10 +21,23 @@
     export let noMb: boolean | undefined = undefined // no margin bottom
 
     export let prefixIcon: string | undefined = undefined
+    export let suffixIcon: string | undefined = undefined
+
+    function handleKeydown(e: KeyboardEvent) {
+        dispatchKeydown('keydown', e)
+    }
+
+    function handlePrefixIconClick() {
+        dispatch('prefix')
+    }
+
+    function handleSuffixIconClick() {
+        dispatch('suffix')
+    }
 </script>
 
 <div class:mb-6={!noMb}>
-    <div class="flex {oneLine ? 'flex-row items-center' : 'flex-col'}">
+    <div class="flex {oneLine ? 'flex-col md:flex-row items-center' : 'flex-col'}">
         <div class={oneLine ? 'w-full md:w-2/4 lg:w-1/4' : ''}>
             {#if label}
                 <label for={name} class="block mb-2 text-sm font-medium label-{color}">{label}</label>
@@ -28,21 +49,30 @@
         <div class={oneLine ? 'w-full md:w-2/4 lg:w-3/4' : ''}>
             <div class="relative">
                 {#if prefixIcon}
-                    <div class="absolute left-2 top-2.5">
+                    <div class="absolute left-2 top-2.5" on:click={handlePrefixIconClick}>
                         <Icon name={prefixIcon} classes="icon-{color}" />
                     </div>
                 {/if}
 
-                <input
-                    {...$$restProps}
-                    id={name}
-                    {name}
-                    on:input
-                    bind:value
-                    class="input-{color}  border text-sm rounded-lg block w-full p-2.5 {classes}"
-                    class:input-error={hasError}
-                    class:has-prefix-icon={!!prefixIcon}
-                />
+                <slot>
+                    <input
+                        {...$$restProps}
+                        id={name}
+                        {name}
+                        on:input
+                        bind:value
+                        class="input-{color} border text-sm rounded-lg block w-full p-2.5 {classes}"
+                        class:input-error={hasError}
+                        class:has-prefix-icon={!!prefixIcon}
+                        on:keydown={handleKeydown}
+                    />
+                </slot>
+
+                {#if suffixIcon}
+                    <div class="absolute right-3 top-2.5 cursor-pointer" on:click={handleSuffixIconClick}>
+                        <Icon name={suffixIcon} classes="icon-{color}" />
+                    </div>
+                {/if}
             </div>
         </div>
     </div>

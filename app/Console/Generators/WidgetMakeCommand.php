@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lexxyungcarter
- * Date: 14/10/2019
- * Time: 16:32
- */
 
 namespace App\Console\Generators;
 
@@ -22,7 +16,7 @@ class WidgetMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new AceLords project widget class';
+    protected $description = 'Create a new widget class';
 
     /**
      * The type of class being generated.

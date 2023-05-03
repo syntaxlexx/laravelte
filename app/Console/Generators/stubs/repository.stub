@@ -3,6 +3,11 @@
 namespace DummyNamespace;
 
 use DB;
+use Exception;
+use App\Models\DummyModel;
+use App\Events\CRUDErrorOccurred;
+use App\Http\Resources\DummyResource;
+use App\Http\Resources\DummyResourceCollection;
 
 class DummyClass
 {
@@ -13,7 +18,7 @@ class DummyClass
      *
      * @return void
      */
-    public function __construct(Model $model)
+    public function __construct(DummyModel $model)
     {
         $this->model = $model;
     }
@@ -23,27 +28,27 @@ class DummyClass
      *
      * @param string $pagination
      *
-     * @return ModelResourceCollection
+     * @return DummyResourceCollection
      */
     public function get($pagination = 'm')
     {
         $data = $this->model->latest()
-            ->paginate(core_paginate($pagination));
+            ->paginate(pagination($pagination));
 
-        return new ModelResourceCollection($data);
+        return new DummyResourceCollection($data);
     }
 
     /**
      * find model record
      * @param $id
      *
-     * @return ModelResource
+     * @return DummyResource
      */
     public function find($id)
     {
         $item = $this->model->findOrFail($id);
 
-        return new ModelResource($item);
+        return new DummyResource($item);
     }
 
     /**
@@ -51,7 +56,7 @@ class DummyClass
      *
      * @param string $pagination
      *
-     * @return ModelResourceCollection
+     * @return DummyResourceCollection
      */
     public function search($pagination = 'm')
     {
@@ -60,15 +65,15 @@ class DummyClass
         $data = $this->model
             ->where('name', 'LIKE', '%' . $term . '%')
             ->latest()
-            ->paginate(core_paginate($pagination));
+            ->paginate(pagination($pagination));
 
-        return new ModelResourceCollection($data);
+        return new DummyResourceCollection($data);
     }
 
     /**
      * create a new record
      *
-     * @return ModelResource
+     * @return DummyResource
      */
     public function create()
     {
@@ -80,21 +85,23 @@ class DummyClass
             ]);
 
             DB::commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
-            debugOn() ? dde($e->getMessage()) : false;
+            ddOnError($e);
+
+            event(new CRUDErrorOccurred($e->getMessage()));
 
             return false;
         }
 
-        return new ModelResource($data);
+        return new DummyResource($data);
     }
 
     /**
      * update a record
      *
-     * @return ModelResource
+     * @return DummyResource
      */
     public function update($id)
     {
@@ -108,15 +115,17 @@ class DummyClass
             ]);
 
             DB::commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();
 
-            debugOn() ? dde($e->getMessage()) : false;
+            ddOnError($e);
+
+            event(new CRUDErrorOccurred($e->getMessage()));
 
             return false;
         }
 
-        return new ModelResource($data);
+        return new DummyResource($data);
     }
 
     /**
@@ -128,6 +137,16 @@ class DummyClass
      */
     public function delete($id)
     {
-        return $this->model->findOrFail($id)->delete();
+        try {
+            $resp = $this->model->findOrFail($id)->delete();
+        } catch (Exception $e) {
+            event(new CRUDErrorOccurred($e->getMessage()));
+
+            return false;
+        }
+
+        // event - alert
+
+        return $resp;
     }
 }

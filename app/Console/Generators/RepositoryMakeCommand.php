@@ -2,6 +2,8 @@
 
 namespace App\Console\Generators;
 
+use Str;
+
 class RepositoryMakeCommand extends GeneratorCommand
 {
     /**
@@ -16,7 +18,7 @@ class RepositoryMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new AceLords project event class';
+    protected $description = 'Create a repository class';
 
     /**
      * The type of class being generated.
@@ -55,5 +57,71 @@ class RepositoryMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace)
     {
         return $rootNamespace.'\Repositories';
+    }
+
+    /**
+     * Replace the namespace for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $name
+     * @return $this
+     */
+    protected function replaceNamespace(&$stub, $name)
+    {
+        $stub = str_replace(
+            [
+                'DummyNamespace',
+                'DummyRootNamespace',
+                'NamespacedDummyUserModel',
+                'DummyModelTableName',
+                'DummySeederClassName',
+                'DummyModel',
+                'DummyResource',
+                'DummyResourceCollection',
+            ],
+            [
+                $this->getNamespace($name),
+                $this->rootNamespace(),
+                $this->userProviderModel(),
+                $this->getDefaultModelTableName($name),
+                $this->getSeederNameFromClassName(),
+                $this->getModelNameFromClassName(),
+                $this->getResourceNameFromClassName(),
+                $this->getResourceCollectionNameFromClassName(),
+            ],
+            $stub
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get model name.
+     *
+     * @return string
+     */
+    protected function getModelNameFromClassName()
+    {
+        return Str::replace('Repository', '', $this->className);
+    }
+
+    /**
+     * Get resource name.
+     *
+     * @return string
+     */
+    protected function getResourceNameFromClassName()
+    {
+        return $this->getModelNameFromClassName() . 'Resource';
+    }
+
+    /**
+     * Get resource collection name.
+     *
+     * @return string
+     */
+    protected function getResourceCollectionNameFromClassName()
+    {
+        return $this->getModelNameFromClassName() . 'ResourceCollection';
     }
 }

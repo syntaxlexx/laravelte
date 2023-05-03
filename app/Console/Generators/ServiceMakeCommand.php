@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lexxyungcarter
- * Date: 23/10/2019
- * Time: 12:22
- */
 
 namespace App\Console\Generators;
 
@@ -22,7 +16,7 @@ class ServiceMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new AceLords project service class for a facade class';
+    protected $description = 'Create a new service class for a facade class';
 
     /**
      * The type of class being generated.

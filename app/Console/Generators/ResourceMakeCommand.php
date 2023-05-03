@@ -19,7 +19,7 @@ class ResourceMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new AceLords project resource';
+    protected $description = 'Create a new resource';
 
     /**
      * The type of class being generated.

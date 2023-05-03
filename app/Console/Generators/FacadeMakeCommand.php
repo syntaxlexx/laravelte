@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lexxyungcarter
- * Date: 23/10/2019
- * Time: 12:18
- */
 
 namespace App\Console\Generators;
 

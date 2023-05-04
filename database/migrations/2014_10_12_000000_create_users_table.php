@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+
+        $index = rand(2344, 8988);
+        DB::statement("ALTER TABLE users AUTO_INCREMENT = $index");
     }
 
     /**

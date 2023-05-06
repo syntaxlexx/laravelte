@@ -23,8 +23,10 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        $index = rand(2344, 8988);
-        DB::statement("ALTER TABLE users AUTO_INCREMENT = $index");
+        if(env('DB_CONNECTION') != 'sqlite') {
+            $index = rand(2344, 8988);
+            DB::statement("ALTER TABLE users AUTO_INCREMENT = $index");
+        }
     }
 
     /**

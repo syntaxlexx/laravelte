@@ -3,6 +3,7 @@
 namespace DummyNamespace;
 
 use Illuminate\Support\Facades\Facade;
+use App\Services\DummyClassService;
 
 class DummyClass extends Facade
 {
@@ -12,6 +13,6 @@ class DummyClass extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return MyService::class;
+        return DummyClassService::class;
     }
 }

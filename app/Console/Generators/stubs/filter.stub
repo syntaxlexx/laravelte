@@ -14,11 +14,16 @@ class DummyClass extends OsmoseFilter implements OsmoseFilterInterface
     public function residue() :array
     {
         return [
-            "param"    => function($value, $query) {
+            "param" => function($query, $value) {
                 return $query->where(function($q) use ($value) {
                     return $q->where('param1', 'like',  $value . "%");
                 });
-            }
+            },
+            "param2" => function($query, $value) {
+                return $query->where('title', 'like', '%' . $value . '%');
+            },
+            "uid"   => "column:uid",
+            "id"    => "column:id",
         ];
     }
 }

@@ -20,6 +20,7 @@
         "laravel/slack-notification-channel": "^2.5",
         "laravel/tinker": "^2.8",
         "lorisleiva/laravel-actions": "^2.5",
+        "oneduo/laravel-recaptcha-enterprise": "*",
         "predis/predis": "^2.1",
         "stevebauman/location": "^6.6",
         "tightenco/ziggy": "^1.0"

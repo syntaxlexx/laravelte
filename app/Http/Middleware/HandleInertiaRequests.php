@@ -51,7 +51,7 @@ class HandleInertiaRequests extends Middleware
             'siteName' => config('app.name'),
             'systemVersion' => config('system.version'),
             'locale' => Session::get('locale') ?? App::getLocale(),
-        ]);
+        ], $request->session()->get('flash_success_data') ?? []);
 
         $user = $request->user();
 

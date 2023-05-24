@@ -47,6 +47,16 @@ class Login
 }
 /**
  */
+class LoginLinkSent
+{
+}
+/**
+ */
+class LoginViaMagicLink
+{
+}
+/**
+ */
 class Logout
 {
 }

@@ -64,11 +64,12 @@ trait CustomControllerResponsesTrait
             ], $data), $code);
         }
 
-        return redirect()->back()->with('success', $message);
-
-        // return redirect()->back()->with(
-        //     array_merge(['success' => $message], $data)
-        // );
+        return redirect()->back()->with(
+            array_merge(
+                ['success' => $message],
+                ['flash_success_data' => $data]
+            )
+        );
     }
 
     /**

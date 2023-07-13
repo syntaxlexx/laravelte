@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { useForm, router } from '@inertiajs/svelte'
-    import { fly } from 'svelte/transition'
-    import { quintOut } from 'svelte/easing'
-    import { onMount } from 'svelte'
-    import { Alert, Button, DisplayErrors, Icon, Input, Title } from '@/Components'
-    import { toasts } from 'svelte-toasts'
+    import { Button, DisplayErrors, Icon, Input, Title } from '@/Components'
     import { isEmail } from '@/helpers'
+    import { router, useForm } from '@inertiajs/svelte'
+    import { onMount } from 'svelte'
+    import { toasts } from 'svelte-toasts'
+    import { quintOut } from 'svelte/easing'
+    import { fly } from 'svelte/transition'
 
     let ready = false
     onMount(() => (ready = true))

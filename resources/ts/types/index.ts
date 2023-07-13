@@ -1,3 +1,31 @@
+
+export type User = {
+    id: number,
+    name: string // username
+    email: string,
+    phone?: string,
+    first_name: string,
+    last_name?: string,
+    full_name?: string,
+    role: string,
+    status: string,
+    date_of_birth?: Date,
+    timezone?: string,
+    email_verified_at?: Date,
+    email_verified_at_w3c?: Date,
+    phone_verified_at?: Date,
+    phone_verified_at_w3c?: Date,
+    last_login_at?: Date,
+    last_login_at_w3c?: Date,
+    created_at?: Date,
+    created_at_w3c?: Date,
+    updated_at?: Date,
+    updated_at_w3c?: Date,
+    verified_at?: Date,
+    verified_at_w3c?: Date,
+    avatar_url?: string,
+}
+
 export type ResetSystemAction = {
     text: string,
     action: string,
@@ -53,33 +81,4 @@ export type Testimonial = {
     is_approved: boolean,
     created_at: Date,
     updated_at?: Date,
-}
-
-export type User = {
-    id: number,
-    name: string // username
-    email: string,
-    phone?: string,
-    first_name: string,
-    last_name?: string,
-    full_name?: string,
-    role: string,
-    status: string,
-    date_of_birth?: Date,
-    timezone?: string,
-    email_verified_at?: Date,
-    email_verified_at_w3c?: Date,
-    phone_verified_at?: Date,
-    phone_verified_at_w3c?: Date,
-    last_login_at?: Date,
-    last_login_at_w3c?: Date,
-    created_at?: Date,
-    created_at_w3c?: Date,
-    updated_at?: Date,
-    updated_at_w3c?: Date,
-    verified_at?: Date,
-    verified_at_w3c?: Date,
-    avatar_url?: string,
-
-
 }

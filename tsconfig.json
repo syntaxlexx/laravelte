@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-        "target": "esnext",
-        "module": "esnext",
+        "target": "ESNext",
+        "module": "ESNext",
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -10,6 +10,7 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
         "baseUrl": ".",
         "paths": {
             "@/*": [
@@ -18,7 +19,9 @@
         },
     },
     "include": [
-        "resources/ts"
+        "resources/ts/**/*.ts",
+        "resources/ts/**/*.d.ts",
+        "resources/ts/**/*.svelte",
     ],
     "exclude": [
         "node_modules"

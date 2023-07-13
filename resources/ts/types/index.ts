@@ -1,4 +1,3 @@
-
 export type User = {
     id: number,
     name: string // username
@@ -25,6 +24,12 @@ export type User = {
     verified_at_w3c?: Date,
     avatar_url?: string,
 }
+
+export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
+    auth: {
+        user: User;
+    };
+};
 
 export type ResetSystemAction = {
     text: string,
